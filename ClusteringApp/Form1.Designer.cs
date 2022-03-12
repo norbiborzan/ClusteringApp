@@ -44,7 +44,7 @@ namespace ClusteringApp
             this.grpOperations = new System.Windows.Forms.GroupBox();
             this.grpPreprocessing = new System.Windows.Forms.GroupBox();
             this.lblPreprocessingType = new System.Windows.Forms.Label();
-            this.optSubstitute = new System.Windows.Forms.RadioButton();
+            this.optReplaceNan = new System.Windows.Forms.RadioButton();
             this.optDropNaRows = new System.Windows.Forms.RadioButton();
             this.optDropNaColumns = new System.Windows.Forms.RadioButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -56,18 +56,13 @@ namespace ClusteringApp
             this.optHighlighetdScatter = new System.Windows.Forms.RadioButton();
             this.optAll = new System.Windows.Forms.RadioButton();
             this.lblPlottingTypel = new System.Windows.Forms.Label();
-            this.imgScatter = new System.Windows.Forms.PictureBox();
-            this.imgHighlightedScatter = new System.Windows.Forms.PictureBox();
             this.grpDataset.SuspendLayout();
             this.grpOperations.SuspendLayout();
             this.grpPreprocessing.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataset)).BeginInit();
             this.grpPlotting.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgScatter)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgHighlightedScatter)).BeginInit();
             this.SuspendLayout();
             // 
             // txtFilePath
@@ -222,7 +217,7 @@ namespace ClusteringApp
             // 
             // grpPreprocessing
             // 
-            this.grpPreprocessing.Controls.Add(this.optSubstitute);
+            this.grpPreprocessing.Controls.Add(this.optReplaceNan);
             this.grpPreprocessing.Controls.Add(this.lblPreprocessingType);
             this.grpPreprocessing.Controls.Add(this.optDropNaRows);
             this.grpPreprocessing.Controls.Add(this.optDropNaColumns);
@@ -244,16 +239,16 @@ namespace ClusteringApp
             this.lblPreprocessingType.Text = "Select the pre-processing type";
             this.lblPreprocessingType.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // optSubstitute
+            // optReplaceNan
             // 
-            this.optSubstitute.AutoSize = true;
-            this.optSubstitute.Location = new System.Drawing.Point(73, 192);
-            this.optSubstitute.Margin = new System.Windows.Forms.Padding(4);
-            this.optSubstitute.Name = "optSubstitute";
-            this.optSubstitute.Size = new System.Drawing.Size(457, 29);
-            this.optSubstitute.TabIndex = 14;
-            this.optSubstitute.Text = "Substitute NaN values with average of neighbors";
-            this.optSubstitute.UseVisualStyleBackColor = true;
+            this.optReplaceNan.AutoSize = true;
+            this.optReplaceNan.Location = new System.Drawing.Point(73, 192);
+            this.optReplaceNan.Margin = new System.Windows.Forms.Padding(4);
+            this.optReplaceNan.Name = "optReplaceNan";
+            this.optReplaceNan.Size = new System.Drawing.Size(441, 29);
+            this.optReplaceNan.TabIndex = 14;
+            this.optReplaceNan.Text = "Replace NaN values with average of neighbors";
+            this.optReplaceNan.UseVisualStyleBackColor = true;
             // 
             // optDropNaRows
             // 
@@ -303,12 +298,10 @@ namespace ClusteringApp
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.imgHighlightedScatter);
-            this.tabPage2.Controls.Add(this.imgScatter);
             this.tabPage2.Location = new System.Drawing.Point(4, 33);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(2008, 1038);
+            this.tabPage2.Size = new System.Drawing.Size(1955, 1049);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Plot";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -386,22 +379,6 @@ namespace ClusteringApp
             this.lblPlottingTypel.Text = "Select the operation type";
             this.lblPlottingTypel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // imgScatter
-            // 
-            this.imgScatter.Location = new System.Drawing.Point(18, 21);
-            this.imgScatter.Name = "imgScatter";
-            this.imgScatter.Size = new System.Drawing.Size(977, 983);
-            this.imgScatter.TabIndex = 0;
-            this.imgScatter.TabStop = false;
-            // 
-            // imgHighlightedScatter
-            // 
-            this.imgHighlightedScatter.Location = new System.Drawing.Point(1024, 21);
-            this.imgHighlightedScatter.Name = "imgHighlightedScatter";
-            this.imgHighlightedScatter.Size = new System.Drawing.Size(955, 983);
-            this.imgHighlightedScatter.TabIndex = 1;
-            this.imgHighlightedScatter.TabStop = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -428,12 +405,9 @@ namespace ClusteringApp
             this.grpPreprocessing.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataset)).EndInit();
             this.grpPlotting.ResumeLayout(false);
             this.grpPlotting.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgScatter)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgHighlightedScatter)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -454,7 +428,7 @@ namespace ClusteringApp
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.GroupBox grpOperations;
         private System.Windows.Forms.GroupBox grpPreprocessing;
-        private System.Windows.Forms.RadioButton optSubstitute;
+        private System.Windows.Forms.RadioButton optReplaceNan;
         private System.Windows.Forms.Label lblPreprocessingType;
         private System.Windows.Forms.RadioButton optDropNaRows;
         private System.Windows.Forms.RadioButton optDropNaColumns;
@@ -467,8 +441,6 @@ namespace ClusteringApp
         private System.Windows.Forms.RadioButton optHighlighetdScatter;
         private System.Windows.Forms.RadioButton optAll;
         private System.Windows.Forms.Label lblPlottingTypel;
-        private System.Windows.Forms.PictureBox imgHighlightedScatter;
-        private System.Windows.Forms.PictureBox imgScatter;
     }
 }
 
