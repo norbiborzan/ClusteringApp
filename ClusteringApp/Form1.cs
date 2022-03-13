@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace ClusteringApp
 {
@@ -27,7 +28,35 @@ namespace ClusteringApp
 
         private void btnStartClustering_Click(object sender, EventArgs e)
         {
+            var pyEgine = new PythonEngine();
+            if (optKNN.Checked)
+            {
+                if (optDropNaRows.Checked)
+                {
+                    pyEgine.RunPyScript("knn_dropna_row", filePath);
+                }
+                else if (optDropNaColumns.Checked)
+                {
+                    pyEgine.RunPyScript("knn_dropna_col", filePath);
+                }
+                else if (optReplaceNan.Checked)
+                {
+                    pyEgine.RunPyScript("knn_replace", filePath);
+                }
+            }
+            else if (optSVM.Checked)
+            {
 
+            }
+            else if (optBayes.Checked)
+            {
+
+            }
+            else if (optCompare.Checked)
+            {
+
+            }
+            
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -37,33 +66,46 @@ namespace ClusteringApp
 
         private void BindData(string filePath)
         {
-            DataTable dt = new DataTable();
-            string[] lines = System.IO.File.ReadAllLines(filePath);
-            if (lines.Length > 0)
+            try
             {
-                //first line to create header
-                string firstLine = lines[0];
-                string[] headerLabels = firstLine.Split(',');
-                foreach (string headerWord in headerLabels)
+                DataTable dt = new DataTable();
+                string[] lines = System.IO.File.ReadAllLines(filePath);
+                if (lines.Length > 0)
                 {
-                    dt.Columns.Add(new DataColumn(headerWord));
-                }
-                //For Data
-                for (int i = 1; i < lines.Length; i++)
-                {
-                    string[] dataWords = lines[i].Split(',');
-                    DataRow dr = dt.NewRow();
-                    int columnIndex = 0;
+                    //First line to create header
+                    string firstLine = lines[0];
+                    string[] headerLabels = firstLine.Split(',');
                     foreach (string headerWord in headerLabels)
                     {
-                        dr[headerWord] = dataWords[columnIndex++];
+                        dt.Columns.Add(new DataColumn(headerWord));
                     }
-                    dt.Rows.Add(dr);
+                    //For Data
+                    for (int i = 1; i < lines.Length; i++)
+                    {
+                        string[] dataWords = lines[i].Split(',');
+                        DataRow dr = dt.NewRow();
+                        int columnIndex = 0;
+                        foreach (string headerWord in headerLabels)
+                        {
+                            dr[headerWord] = dataWords[columnIndex++];
+                        }
+                        dt.Rows.Add(dr);
+                    }
+                }
+                if (dt.Rows.Count > 0)
+                {
+                    dgvDataset.DataSource = dt;
                 }
             }
-            if (dt.Rows.Count > 0)
+            catch (IOException ex)
             {
-                dgvDataset.DataSource = dt;
+                MessageBox.Show("CSV file in use. \nClose the file and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtFilePath.Clear();
+                return;
+            } 
+            catch (ArgumentException ex)
+            {
+                return;
             }
 
         }

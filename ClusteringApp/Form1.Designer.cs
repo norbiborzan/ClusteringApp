@@ -40,22 +40,22 @@ namespace ClusteringApp
             this.lblFilePath = new System.Windows.Forms.Label();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.lblAppVer = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.optCompare = new System.Windows.Forms.RadioButton();
             this.grpOperations = new System.Windows.Forms.GroupBox();
             this.grpPreprocessing = new System.Windows.Forms.GroupBox();
-            this.lblPreprocessingType = new System.Windows.Forms.Label();
             this.optReplaceNan = new System.Windows.Forms.RadioButton();
+            this.lblPreprocessingType = new System.Windows.Forms.Label();
             this.optDropNaRows = new System.Windows.Forms.RadioButton();
             this.optDropNaColumns = new System.Windows.Forms.RadioButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgvDataset = new System.Windows.Forms.DataGridView();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.grpPlotting = new System.Windows.Forms.GroupBox();
+            this.lblPlottingTypel = new System.Windows.Forms.Label();
             this.optScatter = new System.Windows.Forms.RadioButton();
             this.optHighlighetdScatter = new System.Windows.Forms.RadioButton();
             this.optAll = new System.Windows.Forms.RadioButton();
-            this.lblPlottingTypel = new System.Windows.Forms.Label();
             this.grpDataset.SuspendLayout();
             this.grpOperations.SuspendLayout();
             this.grpPreprocessing.SuspendLayout();
@@ -76,10 +76,10 @@ namespace ClusteringApp
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(287, 1031);
+            this.btnClose.Location = new System.Drawing.Point(331, 1018);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(253, 46);
+            this.btnClose.Size = new System.Drawing.Size(295, 46);
             this.btnClose.TabIndex = 2;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -87,10 +87,10 @@ namespace ClusteringApp
             // 
             // btnStartClustering
             // 
-            this.btnStartClustering.Location = new System.Drawing.Point(26, 1031);
+            this.btnStartClustering.Location = new System.Drawing.Point(24, 1018);
             this.btnStartClustering.Margin = new System.Windows.Forms.Padding(4);
             this.btnStartClustering.Name = "btnStartClustering";
-            this.btnStartClustering.Size = new System.Drawing.Size(253, 46);
+            this.btnStartClustering.Size = new System.Drawing.Size(295, 46);
             this.btnStartClustering.TabIndex = 3;
             this.btnStartClustering.Text = "Start";
             this.btnStartClustering.UseVisualStyleBackColor = true;
@@ -99,7 +99,7 @@ namespace ClusteringApp
             // lblClusteringAlg
             // 
             this.lblClusteringAlg.AutoSize = true;
-            this.lblClusteringAlg.Location = new System.Drawing.Point(9, 52);
+            this.lblClusteringAlg.Location = new System.Drawing.Point(9, 39);
             this.lblClusteringAlg.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblClusteringAlg.Name = "lblClusteringAlg";
             this.lblClusteringAlg.Size = new System.Drawing.Size(227, 25);
@@ -110,7 +110,7 @@ namespace ClusteringApp
             // optKNN
             // 
             this.optKNN.AutoSize = true;
-            this.optKNN.Location = new System.Drawing.Point(73, 96);
+            this.optKNN.Location = new System.Drawing.Point(73, 85);
             this.optKNN.Margin = new System.Windows.Forms.Padding(4);
             this.optKNN.Name = "optKNN";
             this.optKNN.Size = new System.Drawing.Size(79, 29);
@@ -122,7 +122,7 @@ namespace ClusteringApp
             // optSVM
             // 
             this.optSVM.AutoSize = true;
-            this.optSVM.Location = new System.Drawing.Point(73, 144);
+            this.optSVM.Location = new System.Drawing.Point(73, 135);
             this.optSVM.Margin = new System.Windows.Forms.Padding(4);
             this.optSVM.Name = "optSVM";
             this.optSVM.Size = new System.Drawing.Size(82, 29);
@@ -134,7 +134,7 @@ namespace ClusteringApp
             // optBayes
             // 
             this.optBayes.AutoSize = true;
-            this.optBayes.Location = new System.Drawing.Point(73, 193);
+            this.optBayes.Location = new System.Drawing.Point(73, 185);
             this.optBayes.Margin = new System.Windows.Forms.Padding(4);
             this.optBayes.Name = "optBayes";
             this.optBayes.Size = new System.Drawing.Size(235, 29);
@@ -182,29 +182,29 @@ namespace ClusteringApp
             // 
             this.lblAppVer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblAppVer.AutoSize = true;
-            this.lblAppVer.Location = new System.Drawing.Point(8, 1087);
+            this.lblAppVer.Location = new System.Drawing.Point(15, 1087);
             this.lblAppVer.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblAppVer.Name = "lblAppVer";
             this.lblAppVer.Size = new System.Drawing.Size(69, 25);
             this.lblAppVer.TabIndex = 11;
             this.lblAppVer.Text = "V1.0.0";
             // 
-            // radioButton1
+            // optCompare
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(73, 240);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(4);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(215, 29);
-            this.radioButton1.TabIndex = 10;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Compare Algorithms";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.optCompare.AutoSize = true;
+            this.optCompare.Location = new System.Drawing.Point(73, 235);
+            this.optCompare.Margin = new System.Windows.Forms.Padding(4);
+            this.optCompare.Name = "optCompare";
+            this.optCompare.Size = new System.Drawing.Size(215, 29);
+            this.optCompare.TabIndex = 10;
+            this.optCompare.TabStop = true;
+            this.optCompare.Text = "Compare Algorithms";
+            this.optCompare.UseVisualStyleBackColor = true;
             // 
             // grpOperations
             // 
             this.grpOperations.Controls.Add(this.lblClusteringAlg);
-            this.grpOperations.Controls.Add(this.radioButton1);
+            this.grpOperations.Controls.Add(this.optCompare);
             this.grpOperations.Controls.Add(this.optKNN);
             this.grpOperations.Controls.Add(this.optSVM);
             this.grpOperations.Controls.Add(this.optBayes);
@@ -228,21 +228,10 @@ namespace ClusteringApp
             this.grpPreprocessing.TabStop = false;
             this.grpPreprocessing.Text = "Pre-Processing";
             // 
-            // lblPreprocessingType
-            // 
-            this.lblPreprocessingType.AutoSize = true;
-            this.lblPreprocessingType.Location = new System.Drawing.Point(9, 52);
-            this.lblPreprocessingType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblPreprocessingType.Name = "lblPreprocessingType";
-            this.lblPreprocessingType.Size = new System.Drawing.Size(276, 25);
-            this.lblPreprocessingType.TabIndex = 11;
-            this.lblPreprocessingType.Text = "Select the pre-processing type";
-            this.lblPreprocessingType.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // optReplaceNan
             // 
             this.optReplaceNan.AutoSize = true;
-            this.optReplaceNan.Location = new System.Drawing.Point(73, 192);
+            this.optReplaceNan.Location = new System.Drawing.Point(73, 185);
             this.optReplaceNan.Margin = new System.Windows.Forms.Padding(4);
             this.optReplaceNan.Name = "optReplaceNan";
             this.optReplaceNan.Size = new System.Drawing.Size(441, 29);
@@ -250,10 +239,21 @@ namespace ClusteringApp
             this.optReplaceNan.Text = "Replace NaN values with average of neighbors";
             this.optReplaceNan.UseVisualStyleBackColor = true;
             // 
+            // lblPreprocessingType
+            // 
+            this.lblPreprocessingType.AutoSize = true;
+            this.lblPreprocessingType.Location = new System.Drawing.Point(9, 39);
+            this.lblPreprocessingType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPreprocessingType.Name = "lblPreprocessingType";
+            this.lblPreprocessingType.Size = new System.Drawing.Size(276, 25);
+            this.lblPreprocessingType.TabIndex = 11;
+            this.lblPreprocessingType.Text = "Select the pre-processing type";
+            this.lblPreprocessingType.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // optDropNaRows
             // 
             this.optDropNaRows.AutoSize = true;
-            this.optDropNaRows.Location = new System.Drawing.Point(73, 93);
+            this.optDropNaRows.Location = new System.Drawing.Point(73, 85);
             this.optDropNaRows.Margin = new System.Windows.Forms.Padding(4);
             this.optDropNaRows.Name = "optDropNaRows";
             this.optDropNaRows.Size = new System.Drawing.Size(325, 29);
@@ -264,7 +264,7 @@ namespace ClusteringApp
             // optDropNaColumns
             // 
             this.optDropNaColumns.AutoSize = true;
-            this.optDropNaColumns.Location = new System.Drawing.Point(73, 141);
+            this.optDropNaColumns.Location = new System.Drawing.Point(73, 135);
             this.optDropNaColumns.Margin = new System.Windows.Forms.Padding(4);
             this.optDropNaColumns.Name = "optDropNaColumns";
             this.optDropNaColumns.Size = new System.Drawing.Size(357, 29);
@@ -296,16 +296,6 @@ namespace ClusteringApp
             this.tabPage1.Text = "Data";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 33);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1955, 1049);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Plot";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
             // dgvDataset
             // 
             this.dgvDataset.AllowUserToAddRows = false;
@@ -322,6 +312,16 @@ namespace ClusteringApp
             this.dgvDataset.Size = new System.Drawing.Size(1943, 1037);
             this.dgvDataset.TabIndex = 0;
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 33);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1955, 1049);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Plot";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
             // grpPlotting
             // 
             this.grpPlotting.Controls.Add(this.lblPlottingTypel);
@@ -330,15 +330,26 @@ namespace ClusteringApp
             this.grpPlotting.Controls.Add(this.optAll);
             this.grpPlotting.Location = new System.Drawing.Point(24, 754);
             this.grpPlotting.Name = "grpPlotting";
-            this.grpPlotting.Size = new System.Drawing.Size(602, 255);
+            this.grpPlotting.Size = new System.Drawing.Size(602, 243);
             this.grpPlotting.TabIndex = 15;
             this.grpPlotting.TabStop = false;
             this.grpPlotting.Text = "Plotting";
             // 
+            // lblPlottingTypel
+            // 
+            this.lblPlottingTypel.AutoSize = true;
+            this.lblPlottingTypel.Location = new System.Drawing.Point(12, 39);
+            this.lblPlottingTypel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPlottingTypel.Name = "lblPlottingTypel";
+            this.lblPlottingTypel.Size = new System.Drawing.Size(227, 25);
+            this.lblPlottingTypel.TabIndex = 11;
+            this.lblPlottingTypel.Text = "Select the operation type";
+            this.lblPlottingTypel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // optScatter
             // 
             this.optScatter.AutoSize = true;
-            this.optScatter.Location = new System.Drawing.Point(66, 103);
+            this.optScatter.Location = new System.Drawing.Point(66, 85);
             this.optScatter.Margin = new System.Windows.Forms.Padding(4);
             this.optScatter.Name = "optScatter";
             this.optScatter.Size = new System.Drawing.Size(137, 29);
@@ -349,7 +360,7 @@ namespace ClusteringApp
             // optHighlighetdScatter
             // 
             this.optHighlighetdScatter.AutoSize = true;
-            this.optHighlighetdScatter.Location = new System.Drawing.Point(66, 151);
+            this.optHighlighetdScatter.Location = new System.Drawing.Point(66, 135);
             this.optHighlighetdScatter.Margin = new System.Windows.Forms.Padding(4);
             this.optHighlighetdScatter.Name = "optHighlighetdScatter";
             this.optHighlighetdScatter.Size = new System.Drawing.Size(239, 29);
@@ -360,24 +371,13 @@ namespace ClusteringApp
             // optAll
             // 
             this.optAll.AutoSize = true;
-            this.optAll.Location = new System.Drawing.Point(66, 200);
+            this.optAll.Location = new System.Drawing.Point(66, 185);
             this.optAll.Margin = new System.Windows.Forms.Padding(4);
             this.optAll.Name = "optAll";
             this.optAll.Size = new System.Drawing.Size(59, 29);
             this.optAll.TabIndex = 13;
             this.optAll.Text = "All";
             this.optAll.UseVisualStyleBackColor = true;
-            // 
-            // lblPlottingTypel
-            // 
-            this.lblPlottingTypel.AutoSize = true;
-            this.lblPlottingTypel.Location = new System.Drawing.Point(12, 54);
-            this.lblPlottingTypel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblPlottingTypel.Name = "lblPlottingTypel";
-            this.lblPlottingTypel.Size = new System.Drawing.Size(227, 25);
-            this.lblPlottingTypel.TabIndex = 11;
-            this.lblPlottingTypel.Text = "Select the operation type";
-            this.lblPlottingTypel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // Form1
             // 
@@ -388,10 +388,10 @@ namespace ClusteringApp
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.grpPreprocessing);
             this.Controls.Add(this.grpOperations);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblAppVer);
             this.Controls.Add(this.grpDataset);
             this.Controls.Add(this.btnStartClustering);
-            this.Controls.Add(this.btnClose);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1024, 1185);
             this.Name = "Form1";
@@ -425,7 +425,7 @@ namespace ClusteringApp
         private System.Windows.Forms.Label lblFilePath;
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.Label lblAppVer;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton optCompare;
         private System.Windows.Forms.GroupBox grpOperations;
         private System.Windows.Forms.GroupBox grpPreprocessing;
         private System.Windows.Forms.RadioButton optReplaceNan;
