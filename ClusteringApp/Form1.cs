@@ -33,7 +33,7 @@ namespace ClusteringApp
             {
                 if (optDropNaRows.Checked)
                 {
-                    pyEgine.RunPyScript("knn_dropna_row", filePath);
+                    pyEgine.RunPyScript("knn_dropna_rows", filePath);
                 }
                 else if (optDropNaColumns.Checked)
                 {

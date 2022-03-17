@@ -1,28 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using IronPython.Hosting;
 
 namespace ClusteringApp
 {
     class PythonEngine
     {
-         public void RunPyScript(string pyClass, string datasetPath)
+         public void RunPyScript(string script, string datasetPath)
          {
-            //instance of python engine
-            var engine = Python.CreateEngine();
-            //reading code from file
-            var source = engine.CreateScriptSourceFromFile(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "script.py"));
-            var scope = engine.CreateScope();
-            //executing script in scope
-            source.Execute(scope);
-            var classPy = scope.GetVariable(pyClass);
-            //initializing class
-            var classIntance = engine.Operations.CreateInstance(classPy);
-            classIntance.func(datasetPath);
+            //System.Diagnostics.Process process = new System.Diagnostics.Process();
+            //System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            ////startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            //startInfo.FileName = "cmd.exe";
+            //startInfo.UseShellExecute = false;
+            //startInfo.Arguments = "python3 " + script + ".py "  + "\"" +  datasetPath + "\"";
+            //process.StartInfo = startInfo;
+            //process.Start();
+
+
+            Process p = new Process();
+            p.StartInfo = new ProcessStartInfo("cmd", "python3 " + "\"" + datasetPath + "\"" + " & exit")
+            {
+                RedirectStandardOutput = true,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            };
+
+            p.Start();
+            string output = p.StandardOutput.ReadToEnd();
+            p.WaitForExit();
+
+            Console.WriteLine(output);
+
+            Console.ReadLine();
          }
     }
 }
