@@ -50,19 +50,12 @@ namespace ClusteringApp
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgvDataset = new System.Windows.Forms.DataGridView();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.grpPlotting = new System.Windows.Forms.GroupBox();
-            this.lblPlottingTypel = new System.Windows.Forms.Label();
-            this.optScatter = new System.Windows.Forms.RadioButton();
-            this.optHighlighetdScatter = new System.Windows.Forms.RadioButton();
-            this.optAll = new System.Windows.Forms.RadioButton();
             this.grpDataset.SuspendLayout();
             this.grpOperations.SuspendLayout();
             this.grpPreprocessing.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataset)).BeginInit();
-            this.grpPlotting.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtFilePath
@@ -76,7 +69,7 @@ namespace ClusteringApp
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(331, 1018);
+            this.btnClose.Location = new System.Drawing.Point(331, 772);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(295, 46);
@@ -87,7 +80,7 @@ namespace ClusteringApp
             // 
             // btnStartClustering
             // 
-            this.btnStartClustering.Location = new System.Drawing.Point(24, 1018);
+            this.btnStartClustering.Location = new System.Drawing.Point(24, 772);
             this.btnStartClustering.Margin = new System.Windows.Forms.Padding(4);
             this.btnStartClustering.Name = "btnStartClustering";
             this.btnStartClustering.Size = new System.Drawing.Size(295, 46);
@@ -278,7 +271,6 @@ namespace ClusteringApp
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(651, 23);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -312,79 +304,11 @@ namespace ClusteringApp
             this.dgvDataset.Size = new System.Drawing.Size(1943, 1037);
             this.dgvDataset.TabIndex = 0;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 33);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1955, 1049);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Plot";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // grpPlotting
-            // 
-            this.grpPlotting.Controls.Add(this.lblPlottingTypel);
-            this.grpPlotting.Controls.Add(this.optScatter);
-            this.grpPlotting.Controls.Add(this.optHighlighetdScatter);
-            this.grpPlotting.Controls.Add(this.optAll);
-            this.grpPlotting.Location = new System.Drawing.Point(24, 754);
-            this.grpPlotting.Name = "grpPlotting";
-            this.grpPlotting.Size = new System.Drawing.Size(602, 243);
-            this.grpPlotting.TabIndex = 15;
-            this.grpPlotting.TabStop = false;
-            this.grpPlotting.Text = "Plotting";
-            // 
-            // lblPlottingTypel
-            // 
-            this.lblPlottingTypel.AutoSize = true;
-            this.lblPlottingTypel.Location = new System.Drawing.Point(12, 39);
-            this.lblPlottingTypel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblPlottingTypel.Name = "lblPlottingTypel";
-            this.lblPlottingTypel.Size = new System.Drawing.Size(227, 25);
-            this.lblPlottingTypel.TabIndex = 11;
-            this.lblPlottingTypel.Text = "Select the operation type";
-            this.lblPlottingTypel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // optScatter
-            // 
-            this.optScatter.AutoSize = true;
-            this.optScatter.Location = new System.Drawing.Point(66, 85);
-            this.optScatter.Margin = new System.Windows.Forms.Padding(4);
-            this.optScatter.Name = "optScatter";
-            this.optScatter.Size = new System.Drawing.Size(137, 29);
-            this.optScatter.TabIndex = 11;
-            this.optScatter.Text = "Scatter Plot";
-            this.optScatter.UseVisualStyleBackColor = true;
-            // 
-            // optHighlighetdScatter
-            // 
-            this.optHighlighetdScatter.AutoSize = true;
-            this.optHighlighetdScatter.Location = new System.Drawing.Point(66, 135);
-            this.optHighlighetdScatter.Margin = new System.Windows.Forms.Padding(4);
-            this.optHighlighetdScatter.Name = "optHighlighetdScatter";
-            this.optHighlighetdScatter.Size = new System.Drawing.Size(239, 29);
-            this.optHighlighetdScatter.TabIndex = 12;
-            this.optHighlighetdScatter.Text = "Highlighted Scatter Plot";
-            this.optHighlighetdScatter.UseVisualStyleBackColor = true;
-            // 
-            // optAll
-            // 
-            this.optAll.AutoSize = true;
-            this.optAll.Location = new System.Drawing.Point(66, 185);
-            this.optAll.Margin = new System.Windows.Forms.Padding(4);
-            this.optAll.Name = "optAll";
-            this.optAll.Size = new System.Drawing.Size(59, 29);
-            this.optAll.TabIndex = 13;
-            this.optAll.Text = "All";
-            this.optAll.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2626, 1121);
-            this.Controls.Add(this.grpPlotting);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.grpPreprocessing);
             this.Controls.Add(this.grpOperations);
@@ -406,8 +330,6 @@ namespace ClusteringApp
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataset)).EndInit();
-            this.grpPlotting.ResumeLayout(false);
-            this.grpPlotting.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -435,12 +357,6 @@ namespace ClusteringApp
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DataGridView dgvDataset;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.GroupBox grpPlotting;
-        private System.Windows.Forms.RadioButton optScatter;
-        private System.Windows.Forms.RadioButton optHighlighetdScatter;
-        private System.Windows.Forms.RadioButton optAll;
-        private System.Windows.Forms.Label lblPlottingTypel;
     }
 }
 
