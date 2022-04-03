@@ -37,5 +37,57 @@ namespace ClusteringApp
             }
             return filePathFull;
         }
+
+        public static string GetAlgorithm(RadioButton knn, RadioButton svm, RadioButton gnb, RadioButton compare)
+        {
+            string algorithm = string.Empty;
+
+            if (knn.Checked)
+            {
+                algorithm = "knn";
+            }
+            else if (svm.Checked)
+            {
+                algorithm = "svm";
+            }
+            else if (gnb.Checked)
+            {
+                algorithm = "gnb";
+            }
+            else if (compare.Checked)
+            {
+                algorithm = "compare";
+            }
+
+            return algorithm;
+        }
+
+        public static string GetOperation(RadioButton rows, RadioButton cols, RadioButton replace)
+        {
+            string operation = string.Empty;
+
+            if (rows.Checked)
+            {
+                operation = "dropnarows";
+            }
+            else if (cols.Checked)
+            {
+                operation = "dropnacols";
+            }
+            else if (replace.Checked)
+            {
+                operation = "replacenan";
+            }
+
+            return operation;
+        }
+
+        public static void DeleteFile()
+        {
+            if (File.Exists(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\pred.csv"))
+            {
+                File.Delete(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\pred.csv");
+            }
+        }
     }
 }

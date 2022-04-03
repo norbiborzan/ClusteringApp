@@ -47,21 +47,47 @@ namespace ClusteringApp
             this.lblPreprocessingType = new System.Windows.Forms.Label();
             this.optDropNaRows = new System.Windows.Forms.RadioButton();
             this.optDropNaColumns = new System.Windows.Forms.RadioButton();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.grpConfMtx = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtTN = new System.Windows.Forms.TextBox();
+            this.txtFN = new System.Windows.Forms.TextBox();
+            this.txtFP = new System.Windows.Forms.TextBox();
+            this.txtTP = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.grpMetrics = new System.Windows.Forms.GroupBox();
+            this.txtTNRate = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtPrelevance = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtFPRate = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtTPRate = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtPrecision = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtAccuracy = new System.Windows.Forms.TextBox();
+            this.lbl7 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgvDataset = new System.Windows.Forms.DataGridView();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.grpDataset.SuspendLayout();
             this.grpOperations.SuspendLayout();
             this.grpPreprocessing.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.grpConfMtx.SuspendLayout();
+            this.grpMetrics.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataset)).BeginInit();
+            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtFilePath
             // 
             this.txtFilePath.Enabled = false;
-            this.txtFilePath.Location = new System.Drawing.Point(73, 109);
+            this.txtFilePath.Location = new System.Drawing.Point(127, 110);
             this.txtFilePath.Margin = new System.Windows.Forms.Padding(4);
             this.txtFilePath.Name = "txtFilePath";
             this.txtFilePath.Size = new System.Drawing.Size(493, 29);
@@ -69,7 +95,7 @@ namespace ClusteringApp
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(331, 772);
+            this.btnClose.Location = new System.Drawing.Point(331, 1070);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(295, 46);
@@ -80,7 +106,7 @@ namespace ClusteringApp
             // 
             // btnStartClustering
             // 
-            this.btnStartClustering.Location = new System.Drawing.Point(24, 772);
+            this.btnStartClustering.Location = new System.Drawing.Point(24, 1070);
             this.btnStartClustering.Margin = new System.Windows.Forms.Padding(4);
             this.btnStartClustering.Name = "btnStartClustering";
             this.btnStartClustering.Size = new System.Drawing.Size(295, 46);
@@ -103,7 +129,7 @@ namespace ClusteringApp
             // optKNN
             // 
             this.optKNN.AutoSize = true;
-            this.optKNN.Location = new System.Drawing.Point(73, 85);
+            this.optKNN.Location = new System.Drawing.Point(73, 83);
             this.optKNN.Margin = new System.Windows.Forms.Padding(4);
             this.optKNN.Name = "optKNN";
             this.optKNN.Size = new System.Drawing.Size(79, 29);
@@ -115,7 +141,7 @@ namespace ClusteringApp
             // optSVM
             // 
             this.optSVM.AutoSize = true;
-            this.optSVM.Location = new System.Drawing.Point(73, 135);
+            this.optSVM.Location = new System.Drawing.Point(73, 120);
             this.optSVM.Margin = new System.Windows.Forms.Padding(4);
             this.optSVM.Name = "optSVM";
             this.optSVM.Size = new System.Drawing.Size(82, 29);
@@ -127,7 +153,7 @@ namespace ClusteringApp
             // optBayes
             // 
             this.optBayes.AutoSize = true;
-            this.optBayes.Location = new System.Drawing.Point(73, 185);
+            this.optBayes.Location = new System.Drawing.Point(73, 157);
             this.optBayes.Margin = new System.Windows.Forms.Padding(4);
             this.optBayes.Name = "optBayes";
             this.optBayes.Size = new System.Drawing.Size(235, 29);
@@ -145,7 +171,7 @@ namespace ClusteringApp
             this.grpDataset.Margin = new System.Windows.Forms.Padding(4);
             this.grpDataset.Name = "grpDataset";
             this.grpDataset.Padding = new System.Windows.Forms.Padding(4);
-            this.grpDataset.Size = new System.Drawing.Size(602, 180);
+            this.grpDataset.Size = new System.Drawing.Size(643, 162);
             this.grpDataset.TabIndex = 10;
             this.grpDataset.TabStop = false;
             this.grpDataset.Text = "Dataset";
@@ -153,7 +179,7 @@ namespace ClusteringApp
             // lblFilePath
             // 
             this.lblFilePath.AutoSize = true;
-            this.lblFilePath.Location = new System.Drawing.Point(9, 113);
+            this.lblFilePath.Location = new System.Drawing.Point(63, 114);
             this.lblFilePath.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFilePath.Name = "lblFilePath";
             this.lblFilePath.Size = new System.Drawing.Size(58, 25);
@@ -175,7 +201,7 @@ namespace ClusteringApp
             // 
             this.lblAppVer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblAppVer.AutoSize = true;
-            this.lblAppVer.Location = new System.Drawing.Point(15, 1087);
+            this.lblAppVer.Location = new System.Drawing.Point(15, 1136);
             this.lblAppVer.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblAppVer.Name = "lblAppVer";
             this.lblAppVer.Size = new System.Drawing.Size(69, 25);
@@ -185,7 +211,7 @@ namespace ClusteringApp
             // optCompare
             // 
             this.optCompare.AutoSize = true;
-            this.optCompare.Location = new System.Drawing.Point(73, 235);
+            this.optCompare.Location = new System.Drawing.Point(73, 194);
             this.optCompare.Margin = new System.Windows.Forms.Padding(4);
             this.optCompare.Name = "optCompare";
             this.optCompare.Size = new System.Drawing.Size(215, 29);
@@ -201,9 +227,9 @@ namespace ClusteringApp
             this.grpOperations.Controls.Add(this.optKNN);
             this.grpOperations.Controls.Add(this.optSVM);
             this.grpOperations.Controls.Add(this.optBayes);
-            this.grpOperations.Location = new System.Drawing.Point(24, 452);
+            this.grpOperations.Location = new System.Drawing.Point(24, 407);
             this.grpOperations.Name = "grpOperations";
-            this.grpOperations.Size = new System.Drawing.Size(602, 296);
+            this.grpOperations.Size = new System.Drawing.Size(643, 251);
             this.grpOperations.TabIndex = 12;
             this.grpOperations.TabStop = false;
             this.grpOperations.Text = "Operation";
@@ -214,9 +240,9 @@ namespace ClusteringApp
             this.grpPreprocessing.Controls.Add(this.lblPreprocessingType);
             this.grpPreprocessing.Controls.Add(this.optDropNaRows);
             this.grpPreprocessing.Controls.Add(this.optDropNaColumns);
-            this.grpPreprocessing.Location = new System.Drawing.Point(24, 201);
+            this.grpPreprocessing.Location = new System.Drawing.Point(24, 192);
             this.grpPreprocessing.Name = "grpPreprocessing";
-            this.grpPreprocessing.Size = new System.Drawing.Size(602, 245);
+            this.grpPreprocessing.Size = new System.Drawing.Size(643, 209);
             this.grpPreprocessing.TabIndex = 13;
             this.grpPreprocessing.TabStop = false;
             this.grpPreprocessing.Text = "Pre-Processing";
@@ -224,7 +250,7 @@ namespace ClusteringApp
             // optReplaceNan
             // 
             this.optReplaceNan.AutoSize = true;
-            this.optReplaceNan.Location = new System.Drawing.Point(73, 185);
+            this.optReplaceNan.Location = new System.Drawing.Point(73, 159);
             this.optReplaceNan.Margin = new System.Windows.Forms.Padding(4);
             this.optReplaceNan.Name = "optReplaceNan";
             this.optReplaceNan.Size = new System.Drawing.Size(441, 29);
@@ -246,7 +272,7 @@ namespace ClusteringApp
             // optDropNaRows
             // 
             this.optDropNaRows.AutoSize = true;
-            this.optDropNaRows.Location = new System.Drawing.Point(73, 85);
+            this.optDropNaRows.Location = new System.Drawing.Point(73, 80);
             this.optDropNaRows.Margin = new System.Windows.Forms.Padding(4);
             this.optDropNaRows.Name = "optDropNaRows";
             this.optDropNaRows.Size = new System.Drawing.Size(325, 29);
@@ -257,7 +283,7 @@ namespace ClusteringApp
             // optDropNaColumns
             // 
             this.optDropNaColumns.AutoSize = true;
-            this.optDropNaColumns.Location = new System.Drawing.Point(73, 135);
+            this.optDropNaColumns.Location = new System.Drawing.Point(73, 120);
             this.optDropNaColumns.Margin = new System.Windows.Forms.Padding(4);
             this.optDropNaColumns.Name = "optDropNaColumns";
             this.optDropNaColumns.Size = new System.Drawing.Size(357, 29);
@@ -265,17 +291,251 @@ namespace ClusteringApp
             this.optDropNaColumns.Text = "Drop NaN values containing columns";
             this.optDropNaColumns.UseVisualStyleBackColor = true;
             // 
-            // tabControl1
+            // grpConfMtx
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Location = new System.Drawing.Point(651, 23);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1963, 1086);
-            this.tabControl1.TabIndex = 14;
+            this.grpConfMtx.Controls.Add(this.label6);
+            this.grpConfMtx.Controls.Add(this.txtTN);
+            this.grpConfMtx.Controls.Add(this.txtFN);
+            this.grpConfMtx.Controls.Add(this.txtFP);
+            this.grpConfMtx.Controls.Add(this.txtTP);
+            this.grpConfMtx.Controls.Add(this.label5);
+            this.grpConfMtx.Controls.Add(this.label4);
+            this.grpConfMtx.Controls.Add(this.label3);
+            this.grpConfMtx.Controls.Add(this.label2);
+            this.grpConfMtx.Controls.Add(this.label1);
+            this.grpConfMtx.Location = new System.Drawing.Point(24, 664);
+            this.grpConfMtx.Name = "grpConfMtx";
+            this.grpConfMtx.Size = new System.Drawing.Size(643, 197);
+            this.grpConfMtx.TabIndex = 13;
+            this.grpConfMtx.TabStop = false;
+            this.grpConfMtx.Text = "Confusion Matrix";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(34, 106);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(99, 50);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Predicted \r\nClass";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtTN
+            // 
+            this.txtTN.Location = new System.Drawing.Point(420, 134);
+            this.txtTN.Name = "txtTN";
+            this.txtTN.ReadOnly = true;
+            this.txtTN.Size = new System.Drawing.Size(187, 29);
+            this.txtTN.TabIndex = 9;
+            this.txtTN.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtFN
+            // 
+            this.txtFN.Location = new System.Drawing.Point(227, 134);
+            this.txtFN.Name = "txtFN";
+            this.txtFN.ReadOnly = true;
+            this.txtFN.Size = new System.Drawing.Size(187, 29);
+            this.txtFN.TabIndex = 8;
+            this.txtFN.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtFP
+            // 
+            this.txtFP.Location = new System.Drawing.Point(420, 96);
+            this.txtFP.Name = "txtFP";
+            this.txtFP.ReadOnly = true;
+            this.txtFP.Size = new System.Drawing.Size(187, 29);
+            this.txtFP.TabIndex = 7;
+            this.txtFP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtTP
+            // 
+            this.txtTP.BackColor = System.Drawing.SystemColors.Control;
+            this.txtTP.Location = new System.Drawing.Point(227, 96);
+            this.txtTP.Name = "txtTP";
+            this.txtTP.ReadOnly = true;
+            this.txtTP.Size = new System.Drawing.Size(187, 29);
+            this.txtTP.TabIndex = 6;
+            this.txtTP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(132, 138);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(89, 25);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Negative";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(141, 99);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(80, 25);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Positive";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(475, 59);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(89, 25);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Negative";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(285, 59);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(80, 25);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Positive";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(365, 33);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(108, 25);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "True Class";
+            // 
+            // grpMetrics
+            // 
+            this.grpMetrics.Controls.Add(this.txtTNRate);
+            this.grpMetrics.Controls.Add(this.label10);
+            this.grpMetrics.Controls.Add(this.txtPrelevance);
+            this.grpMetrics.Controls.Add(this.label11);
+            this.grpMetrics.Controls.Add(this.txtFPRate);
+            this.grpMetrics.Controls.Add(this.label7);
+            this.grpMetrics.Controls.Add(this.txtTPRate);
+            this.grpMetrics.Controls.Add(this.label9);
+            this.grpMetrics.Controls.Add(this.txtPrecision);
+            this.grpMetrics.Controls.Add(this.label8);
+            this.grpMetrics.Controls.Add(this.txtAccuracy);
+            this.grpMetrics.Controls.Add(this.lbl7);
+            this.grpMetrics.Location = new System.Drawing.Point(24, 867);
+            this.grpMetrics.Name = "grpMetrics";
+            this.grpMetrics.Size = new System.Drawing.Size(643, 185);
+            this.grpMetrics.TabIndex = 14;
+            this.grpMetrics.TabStop = false;
+            this.grpMetrics.Text = "Metrics";
+            // 
+            // txtTNRate
+            // 
+            this.txtTNRate.BackColor = System.Drawing.SystemColors.Control;
+            this.txtTNRate.Location = new System.Drawing.Point(420, 83);
+            this.txtTNRate.Name = "txtTNRate";
+            this.txtTNRate.ReadOnly = true;
+            this.txtTNRate.Size = new System.Drawing.Size(187, 29);
+            this.txtTNRate.TabIndex = 22;
+            this.txtTNRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(327, 87);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(84, 25);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "TN Rate";
+            // 
+            // txtPrelevance
+            // 
+            this.txtPrelevance.BackColor = System.Drawing.SystemColors.Control;
+            this.txtPrelevance.Location = new System.Drawing.Point(121, 87);
+            this.txtPrelevance.Name = "txtPrelevance";
+            this.txtPrelevance.ReadOnly = true;
+            this.txtPrelevance.Size = new System.Drawing.Size(187, 29);
+            this.txtPrelevance.TabIndex = 20;
+            this.txtPrelevance.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(7, 90);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(110, 25);
+            this.label11.TabIndex = 19;
+            this.label11.Text = "Prelevance";
+            // 
+            // txtFPRate
+            // 
+            this.txtFPRate.BackColor = System.Drawing.SystemColors.Control;
+            this.txtFPRate.Location = new System.Drawing.Point(420, 127);
+            this.txtFPRate.Name = "txtFPRate";
+            this.txtFPRate.ReadOnly = true;
+            this.txtFPRate.Size = new System.Drawing.Size(187, 29);
+            this.txtFPRate.TabIndex = 18;
+            this.txtFPRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(327, 127);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(82, 25);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "FP Rate";
+            // 
+            // txtTPRate
+            // 
+            this.txtTPRate.BackColor = System.Drawing.SystemColors.Control;
+            this.txtTPRate.Location = new System.Drawing.Point(121, 127);
+            this.txtTPRate.Name = "txtTPRate";
+            this.txtTPRate.ReadOnly = true;
+            this.txtTPRate.Size = new System.Drawing.Size(187, 29);
+            this.txtTPRate.TabIndex = 16;
+            this.txtTPRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(23, 130);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(83, 25);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "TP Rate";
+            // 
+            // txtPrecision
+            // 
+            this.txtPrecision.BackColor = System.Drawing.SystemColors.Control;
+            this.txtPrecision.Location = new System.Drawing.Point(420, 41);
+            this.txtPrecision.Name = "txtPrecision";
+            this.txtPrecision.ReadOnly = true;
+            this.txtPrecision.Size = new System.Drawing.Size(187, 29);
+            this.txtPrecision.TabIndex = 14;
+            this.txtPrecision.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(327, 44);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(92, 25);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Precision";
+            // 
+            // txtAccuracy
+            // 
+            this.txtAccuracy.BackColor = System.Drawing.SystemColors.Control;
+            this.txtAccuracy.Location = new System.Drawing.Point(121, 44);
+            this.txtAccuracy.Name = "txtAccuracy";
+            this.txtAccuracy.ReadOnly = true;
+            this.txtAccuracy.Size = new System.Drawing.Size(187, 29);
+            this.txtAccuracy.TabIndex = 12;
+            this.txtAccuracy.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lbl7
+            // 
+            this.lbl7.AutoSize = true;
+            this.lbl7.Location = new System.Drawing.Point(23, 47);
+            this.lbl7.Name = "lbl7";
+            this.lbl7.Size = new System.Drawing.Size(94, 25);
+            this.lbl7.TabIndex = 11;
+            this.lbl7.Text = "Accuracy";
             // 
             // tabPage1
             // 
@@ -283,7 +543,7 @@ namespace ClusteringApp
             this.tabPage1.Location = new System.Drawing.Point(4, 33);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1955, 1049);
+            this.tabPage1.Size = new System.Drawing.Size(1900, 1101);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Data";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -301,14 +561,28 @@ namespace ClusteringApp
             this.dgvDataset.ReadOnly = true;
             this.dgvDataset.RowHeadersWidth = 72;
             this.dgvDataset.RowTemplate.Height = 31;
-            this.dgvDataset.Size = new System.Drawing.Size(1943, 1037);
+            this.dgvDataset.Size = new System.Drawing.Size(1888, 1089);
             this.dgvDataset.TabIndex = 0;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Location = new System.Drawing.Point(682, 23);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1908, 1138);
+            this.tabControl1.TabIndex = 14;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2626, 1121);
+            this.ClientSize = new System.Drawing.Size(2602, 1170);
+            this.Controls.Add(this.grpMetrics);
+            this.Controls.Add(this.grpConfMtx);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.grpPreprocessing);
             this.Controls.Add(this.grpOperations);
@@ -319,7 +593,7 @@ namespace ClusteringApp
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1024, 1185);
             this.Name = "Form1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clustering Algorithm Comparer";
             this.grpDataset.ResumeLayout(false);
             this.grpDataset.PerformLayout();
@@ -327,9 +601,13 @@ namespace ClusteringApp
             this.grpOperations.PerformLayout();
             this.grpPreprocessing.ResumeLayout(false);
             this.grpPreprocessing.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
+            this.grpConfMtx.ResumeLayout(false);
+            this.grpConfMtx.PerformLayout();
+            this.grpMetrics.ResumeLayout(false);
+            this.grpMetrics.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataset)).EndInit();
+            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -354,9 +632,33 @@ namespace ClusteringApp
         private System.Windows.Forms.Label lblPreprocessingType;
         private System.Windows.Forms.RadioButton optDropNaRows;
         private System.Windows.Forms.RadioButton optDropNaColumns;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.GroupBox grpConfMtx;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtTN;
+        private System.Windows.Forms.TextBox txtFN;
+        private System.Windows.Forms.TextBox txtFP;
+        private System.Windows.Forms.TextBox txtTP;
+        private System.Windows.Forms.GroupBox grpMetrics;
+        private System.Windows.Forms.TextBox txtFPRate;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtTPRate;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtPrecision;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtAccuracy;
+        private System.Windows.Forms.Label lbl7;
+        private System.Windows.Forms.TextBox txtTNRate;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtPrelevance;
+        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DataGridView dgvDataset;
+        private System.Windows.Forms.TabControl tabControl1;
     }
 }
 

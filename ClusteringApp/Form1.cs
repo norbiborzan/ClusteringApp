@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
+﻿using RestSharp;
+using System;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
-using RestSharp;
-using RestSharp.Extensions;
 
 namespace ClusteringApp
 {
@@ -32,66 +26,68 @@ namespace ClusteringApp
 
         private async void btnStartClustering_Click(object sender, EventArgs e)
         {
-            string algorithm = string.Empty;
-            string operation = string.Empty;
+            if (txtFilePath.Text.Length > 0)
+            {
+                if (optDropNaRows.Checked || optDropNaColumns.Checked || optReplaceNan.Checked)
+                {
+                    if (optKNN.Checked || optSVM.Checked || optBayes.Checked || optCompare.Checked) 
+                    {
+                        btnStartClustering.Enabled = false;
+                        btnClose.Enabled = false;
+                        btnBrowse.Enabled = false;
 
-            if (predColumnAdded == true)
-            {
-                dgvDataset.Columns.RemoveAt(0);
-                Data.RemoveHighlight(dgvDataset);
-            }
+                        if (predColumnAdded == true)
+                        {
+                            dgvDataset.Columns.RemoveAt(0);
+                            Data.RemoveHighlight(dgvDataset);
+                        }
 
-            if (optKNN.Checked)
-            {
-                algorithm = "knn";
-            }
-            else if (optSVM.Checked)
-            {
-                algorithm = "svm";
-            }
-            else if (optBayes.Checked)
-            {
-                algorithm = "gnb";
-            }
-            else if (optCompare.Checked)
-            {
-                algorithm = "compare";
-            }
+                        var response = await UploadAsync(filePath, "/" + Utils.GetAlgorithm(optKNN, optSVM, optBayes, optCompare) + "/" + Utils.GetOperation(optDropNaRows, optDropNaColumns, optReplaceNan));
 
-            if (optDropNaRows.Checked)
-            {
-                operation = "dropnarows";
+                        if (response.IsSuccessful)
+                        {
+                            predPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\pred.csv";
+                            File.WriteAllBytes(predPath, Encoding.ASCII.GetBytes(response.Content));
+                            if (File.Exists(predPath))
+                            {
+                                Data.AddPredictedColumn(dgvDataset, predPath);
+                                Data.HighlightDifferences(dgvDataset);
+                                DataAnalysis.GenerateConfusionMatrix(dgvDataset, txtTN, txtFP, txtFN, txtTP);
+                                DataAnalysis.CalculateMetrics(dgvDataset, txtTN, txtFP, txtFN, txtTP,txtAccuracy, txtPrecision, txtPrelevance, txtTPRate, txtFPRate, txtTNRate);
+                                predColumnAdded = true;
+                                foreach (DataGridViewColumn column in dgvDataset.Columns)
+                                {
+                                    column.SortMode = DataGridViewColumnSortMode.NotSortable;
+                                }
+                            }                
+                            Utils.DeleteFile();
+                        }
+                        else
+                        {
+                            MessageBox.Show("The server is not responding. \nTry again.", "Server error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        btnStartClustering.Enabled = true;
+                        btnClose.Enabled = true;
+                        btnBrowse.Enabled = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Algorithm not selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Pre-processing method not selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-            else if (optDropNaColumns.Checked)
+            else
             {
-                operation = "dropnacols";
-            }
-            else if (optReplaceNan.Checked)
-            {
-                operation = "replacenan";
-            }
-
-            await UploadAsync(filePath, "/" + algorithm + "/" + operation);
-
-            if (File.Exists(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location).ToString() + "\\pred.csv"))
-            {
-                Data.AddPredictedColumn(dgvDataset, Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location).ToString() + "\\pred.csv");
-                Data.HighlightDifferences(dgvDataset);
-                predColumnAdded = true;
-            }
-
-            if (File.Exists(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location).ToString() + "\\pred.csv"))
-            {
-                File.Delete(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location).ToString() + "\\pred.csv");
-            }
+                MessageBox.Show("Dataset missing. \nImport the dataset using the Load dataset button.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }   
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            if (File.Exists(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location).ToString() + "\\pred.csv"))
-            {
-                File.Delete(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location).ToString() + "\\pred.csv");
-            }
             Close();
         }
 
@@ -101,16 +97,10 @@ namespace ClusteringApp
             RestRequest restRequest = new RestRequest(operation);
             restRequest.RequestFormat = DataFormat.Json;
             restRequest.Method = Method.Post;
-            //restRequest.AddHeader("Authorization", "Authorization");
             restRequest.AddHeader("Content-Type", "multipart/form-data");
             restRequest.AddFile("content", fileName);
             var restResponse = await restClient.ExecuteAsync(restRequest);
 
-            if (restResponse.IsSuccessful)
-            {
-                predPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location).ToString() + "\\pred.csv";
-                File.WriteAllBytes(predPath, Encoding.ASCII.GetBytes(restResponse.Content));
-            }
             return restResponse;
         }
     }

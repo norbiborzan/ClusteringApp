@@ -87,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data.cs" />
+    <Compile Include="DataAnalysiscs.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
