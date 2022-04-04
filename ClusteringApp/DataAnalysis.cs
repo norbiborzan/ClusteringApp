@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ClusteringApp
@@ -48,22 +44,22 @@ namespace ClusteringApp
             if (tn.Text.Length > 0 && fp.Text.Length > 0 && fn.Text.Length > 0 && tp.Text.Length > 0)
             {
                 float acc = (float.Parse(tp.Text) + float.Parse(tn.Text)) / dgv.Rows.Count;
-                accuracy.Text = Math.Round(acc, 3).ToString();
+                accuracy.Text = Math.Round(acc * 100, 3).ToString();
 
-                float prec = float.Parse(tp.Text) / float.Parse(fp.Text);
-                precision.Text = Math.Round(prec, 3).ToString(); ;
+                float prec = float.Parse(tp.Text) / (float.Parse(tp.Text) + float.Parse(fp.Text));
+                precision.Text = Math.Round(prec * 100, 3).ToString(); ;
 
                 float prel = (float.Parse(tp.Text) + float.Parse(fn.Text)) / dgv.Rows.Count;
-                prelevance.Text = Math.Round(prel, 3).ToString();
+                prelevance.Text = Math.Round(prel * 100, 3).ToString();
 
                 float tpr = float.Parse(tp.Text) / (float.Parse(tp.Text) + (float.Parse(fn.Text)));
-                tprate.Text = Math.Round(tpr, 3).ToString();
+                tprate.Text = Math.Round(tpr * 100, 3).ToString();
 
                 float fpr = float.Parse(fp.Text) / (float.Parse(tn.Text) + (float.Parse(fp.Text)));
-                fprate.Text = Math.Round(fpr, 3).ToString();
+                fprate.Text = Math.Round(fpr * 100, 3).ToString();
 
                 float tnr = float.Parse(tn.Text) / (float.Parse(tn.Text) + (float.Parse(fp.Text)));
-                tnrate.Text = Math.Round(tnr, 3).ToString();
+                tnrate.Text = Math.Round(tnr * 100, 3).ToString();
             }
         }
     }

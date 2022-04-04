@@ -59,6 +59,12 @@ namespace ClusteringApp
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.grpMetrics = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.txtTNRate = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtPrelevance = new System.Windows.Forms.TextBox();
@@ -95,7 +101,7 @@ namespace ClusteringApp
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(331, 1070);
+            this.btnClose.Location = new System.Drawing.Point(358, 1070);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(295, 46);
@@ -106,7 +112,7 @@ namespace ClusteringApp
             // 
             // btnStartClustering
             // 
-            this.btnStartClustering.Location = new System.Drawing.Point(24, 1070);
+            this.btnStartClustering.Location = new System.Drawing.Point(37, 1070);
             this.btnStartClustering.Margin = new System.Windows.Forms.Padding(4);
             this.btnStartClustering.Name = "btnStartClustering";
             this.btnStartClustering.Size = new System.Drawing.Size(295, 46);
@@ -313,54 +319,54 @@ namespace ClusteringApp
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(34, 106);
+            this.label6.Location = new System.Drawing.Point(23, 110);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(99, 50);
+            this.label6.Size = new System.Drawing.Size(149, 25);
             this.label6.TabIndex = 10;
-            this.label6.Text = "Predicted \r\nClass";
+            this.label6.Text = "Predicted Class";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtTN
             // 
-            this.txtTN.Location = new System.Drawing.Point(420, 134);
+            this.txtTN.Location = new System.Drawing.Point(464, 136);
             this.txtTN.Name = "txtTN";
             this.txtTN.ReadOnly = true;
-            this.txtTN.Size = new System.Drawing.Size(187, 29);
+            this.txtTN.Size = new System.Drawing.Size(124, 29);
             this.txtTN.TabIndex = 9;
             this.txtTN.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtFN
             // 
-            this.txtFN.Location = new System.Drawing.Point(227, 134);
+            this.txtFN.Location = new System.Drawing.Point(302, 136);
             this.txtFN.Name = "txtFN";
             this.txtFN.ReadOnly = true;
-            this.txtFN.Size = new System.Drawing.Size(187, 29);
+            this.txtFN.Size = new System.Drawing.Size(124, 29);
             this.txtFN.TabIndex = 8;
             this.txtFN.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtFP
             // 
-            this.txtFP.Location = new System.Drawing.Point(420, 96);
+            this.txtFP.Location = new System.Drawing.Point(464, 95);
             this.txtFP.Name = "txtFP";
             this.txtFP.ReadOnly = true;
-            this.txtFP.Size = new System.Drawing.Size(187, 29);
+            this.txtFP.Size = new System.Drawing.Size(124, 29);
             this.txtFP.TabIndex = 7;
             this.txtFP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtTP
             // 
             this.txtTP.BackColor = System.Drawing.SystemColors.Control;
-            this.txtTP.Location = new System.Drawing.Point(227, 96);
+            this.txtTP.Location = new System.Drawing.Point(302, 95);
             this.txtTP.Name = "txtTP";
             this.txtTP.ReadOnly = true;
-            this.txtTP.Size = new System.Drawing.Size(187, 29);
+            this.txtTP.Size = new System.Drawing.Size(124, 29);
             this.txtTP.TabIndex = 6;
             this.txtTP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(132, 138);
+            this.label5.Location = new System.Drawing.Point(193, 137);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(89, 25);
             this.label5.TabIndex = 5;
@@ -369,7 +375,7 @@ namespace ClusteringApp
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(141, 99);
+            this.label4.Location = new System.Drawing.Point(202, 99);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(80, 25);
             this.label4.TabIndex = 4;
@@ -378,7 +384,7 @@ namespace ClusteringApp
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(475, 59);
+            this.label3.Location = new System.Drawing.Point(483, 59);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 25);
             this.label3.TabIndex = 3;
@@ -387,7 +393,7 @@ namespace ClusteringApp
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(285, 59);
+            this.label2.Location = new System.Drawing.Point(329, 59);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 25);
             this.label2.TabIndex = 2;
@@ -396,7 +402,7 @@ namespace ClusteringApp
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(365, 33);
+            this.label1.Location = new System.Drawing.Point(386, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(108, 25);
             this.label1.TabIndex = 1;
@@ -404,6 +410,12 @@ namespace ClusteringApp
             // 
             // grpMetrics
             // 
+            this.grpMetrics.Controls.Add(this.label15);
+            this.grpMetrics.Controls.Add(this.label16);
+            this.grpMetrics.Controls.Add(this.label17);
+            this.grpMetrics.Controls.Add(this.label14);
+            this.grpMetrics.Controls.Add(this.label13);
+            this.grpMetrics.Controls.Add(this.label12);
             this.grpMetrics.Controls.Add(this.txtTNRate);
             this.grpMetrics.Controls.Add(this.label10);
             this.grpMetrics.Controls.Add(this.txtPrelevance);
@@ -423,20 +435,80 @@ namespace ClusteringApp
             this.grpMetrics.TabStop = false;
             this.grpMetrics.Text = "Metrics";
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(594, 126);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(30, 25);
+            this.label15.TabIndex = 28;
+            this.label15.Text = "%";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(594, 89);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(30, 25);
+            this.label16.TabIndex = 27;
+            this.label16.Text = "%";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(594, 48);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(30, 25);
+            this.label17.TabIndex = 26;
+            this.label17.Text = "%";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(288, 126);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(30, 25);
+            this.label14.TabIndex = 25;
+            this.label14.Text = "%";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(288, 89);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(30, 25);
+            this.label13.TabIndex = 24;
+            this.label13.Text = "%";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(288, 48);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(30, 25);
+            this.label12.TabIndex = 23;
+            this.label12.Text = "%";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // txtTNRate
             // 
             this.txtTNRate.BackColor = System.Drawing.SystemColors.Control;
-            this.txtTNRate.Location = new System.Drawing.Point(420, 83);
+            this.txtTNRate.Location = new System.Drawing.Point(464, 85);
             this.txtTNRate.Name = "txtTNRate";
             this.txtTNRate.ReadOnly = true;
-            this.txtTNRate.Size = new System.Drawing.Size(187, 29);
+            this.txtTNRate.Size = new System.Drawing.Size(124, 29);
             this.txtTNRate.TabIndex = 22;
             this.txtTNRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(327, 87);
+            this.label10.Location = new System.Drawing.Point(370, 83);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(84, 25);
             this.label10.TabIndex = 21;
@@ -445,17 +517,17 @@ namespace ClusteringApp
             // txtPrelevance
             // 
             this.txtPrelevance.BackColor = System.Drawing.SystemColors.Control;
-            this.txtPrelevance.Location = new System.Drawing.Point(121, 87);
+            this.txtPrelevance.Location = new System.Drawing.Point(158, 85);
             this.txtPrelevance.Name = "txtPrelevance";
             this.txtPrelevance.ReadOnly = true;
-            this.txtPrelevance.Size = new System.Drawing.Size(187, 29);
+            this.txtPrelevance.Size = new System.Drawing.Size(124, 29);
             this.txtPrelevance.TabIndex = 20;
             this.txtPrelevance.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(7, 90);
+            this.label11.Location = new System.Drawing.Point(42, 83);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(110, 25);
             this.label11.TabIndex = 19;
@@ -464,17 +536,17 @@ namespace ClusteringApp
             // txtFPRate
             // 
             this.txtFPRate.BackColor = System.Drawing.SystemColors.Control;
-            this.txtFPRate.Location = new System.Drawing.Point(420, 127);
+            this.txtFPRate.Location = new System.Drawing.Point(464, 126);
             this.txtFPRate.Name = "txtFPRate";
             this.txtFPRate.ReadOnly = true;
-            this.txtFPRate.Size = new System.Drawing.Size(187, 29);
+            this.txtFPRate.Size = new System.Drawing.Size(124, 29);
             this.txtFPRate.TabIndex = 18;
             this.txtFPRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(327, 127);
+            this.label7.Location = new System.Drawing.Point(370, 126);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(82, 25);
             this.label7.TabIndex = 17;
@@ -483,17 +555,17 @@ namespace ClusteringApp
             // txtTPRate
             // 
             this.txtTPRate.BackColor = System.Drawing.SystemColors.Control;
-            this.txtTPRate.Location = new System.Drawing.Point(121, 127);
+            this.txtTPRate.Location = new System.Drawing.Point(158, 126);
             this.txtTPRate.Name = "txtTPRate";
             this.txtTPRate.ReadOnly = true;
-            this.txtTPRate.Size = new System.Drawing.Size(187, 29);
+            this.txtTPRate.Size = new System.Drawing.Size(124, 29);
             this.txtTPRate.TabIndex = 16;
             this.txtTPRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(23, 130);
+            this.label9.Location = new System.Drawing.Point(63, 126);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(83, 25);
             this.label9.TabIndex = 15;
@@ -502,17 +574,17 @@ namespace ClusteringApp
             // txtPrecision
             // 
             this.txtPrecision.BackColor = System.Drawing.SystemColors.Control;
-            this.txtPrecision.Location = new System.Drawing.Point(420, 41);
+            this.txtPrecision.Location = new System.Drawing.Point(464, 44);
             this.txtPrecision.Name = "txtPrecision";
             this.txtPrecision.ReadOnly = true;
-            this.txtPrecision.Size = new System.Drawing.Size(187, 29);
+            this.txtPrecision.Size = new System.Drawing.Size(124, 29);
             this.txtPrecision.TabIndex = 14;
             this.txtPrecision.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(327, 44);
+            this.label8.Location = new System.Drawing.Point(362, 44);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(92, 25);
             this.label8.TabIndex = 13;
@@ -521,17 +593,17 @@ namespace ClusteringApp
             // txtAccuracy
             // 
             this.txtAccuracy.BackColor = System.Drawing.SystemColors.Control;
-            this.txtAccuracy.Location = new System.Drawing.Point(121, 44);
+            this.txtAccuracy.Location = new System.Drawing.Point(158, 44);
             this.txtAccuracy.Name = "txtAccuracy";
             this.txtAccuracy.ReadOnly = true;
-            this.txtAccuracy.Size = new System.Drawing.Size(187, 29);
+            this.txtAccuracy.Size = new System.Drawing.Size(124, 29);
             this.txtAccuracy.TabIndex = 12;
             this.txtAccuracy.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbl7
             // 
             this.lbl7.AutoSize = true;
-            this.lbl7.Location = new System.Drawing.Point(23, 47);
+            this.lbl7.Location = new System.Drawing.Point(58, 44);
             this.lbl7.Name = "lbl7";
             this.lbl7.Size = new System.Drawing.Size(94, 25);
             this.lbl7.TabIndex = 11;
@@ -659,6 +731,12 @@ namespace ClusteringApp
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DataGridView dgvDataset;
         private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
     }
 }
 

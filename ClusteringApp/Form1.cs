@@ -50,7 +50,9 @@ namespace ClusteringApp
                             File.WriteAllBytes(predPath, Encoding.ASCII.GetBytes(response.Content));
                             if (File.Exists(predPath))
                             {
-                                Data.AddPredictedColumn(dgvDataset, predPath);
+                                //Data.AddPredictedColumn(dgvDataset, predPath);
+                                dgvDataset.DataSource = null;
+                                Data.BindData(predPath, dgvDataset, txtFilePath);
                                 Data.HighlightDifferences(dgvDataset);
                                 DataAnalysis.GenerateConfusionMatrix(dgvDataset, txtTN, txtFP, txtFN, txtTP);
                                 DataAnalysis.CalculateMetrics(dgvDataset, txtTN, txtFP, txtFN, txtTP,txtAccuracy, txtPrecision, txtPrelevance, txtTPRate, txtFPRate, txtTNRate);

@@ -9,7 +9,7 @@ namespace ClusteringApp
 {
     public static class Data
     {
-        public static  void BindData(string filePath, DataGridView dgv, TextBox textBox)
+        public static void BindData(string filePath, DataGridView dgv, TextBox textBox)
         {
             try
             {
