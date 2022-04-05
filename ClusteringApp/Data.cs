@@ -57,6 +57,7 @@ namespace ClusteringApp
             }
         }
 
+        //not used
         public static  void AddPredictedColumn(DataGridView dgv, string predPath)
         {
             DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
@@ -71,33 +72,68 @@ namespace ClusteringApp
             }
         }
 
-        public static void HighlightDifferences(DataGridView dgv)
+        public static void HighlightDifferences(DataGridView dgv, RadioButton radio)
         {
             int counter = 0;
-            for (int i = 0; i < dgv.Rows.Count; i++)
+            if (radio.Checked)
             {
-                if (dgv.Rows[i].Cells[0].Value.Equals(dgv.Rows[i].Cells[1].Value))
+                for (int i = 0; i < dgv.Rows.Count; i++)
                 {
-                    dgv.Rows[i].Cells[0].Style.BackColor = Color.Green;
-                    dgv.Rows[i].Cells[1].Style.BackColor = Color.Green;
-                }
-                else
-                {
-                    dgv.Rows[i].Cells[0].Style.BackColor = Color.Red;
-                    dgv.Rows[i].Cells[1].Style.BackColor = Color.Red;
-                    counter++;
+                    if (dgv.Rows[i].Cells[0].Value.Equals(dgv.Rows[i].Cells[3].Value))
+                    {
+                        dgv.Rows[i].Cells[0].Style.BackColor = Color.Green;
+                    }
+                    else
+                    {
+                        dgv.Rows[i].Cells[0].Style.BackColor = Color.Red;
+                    }
+                    if (dgv.Rows[i].Cells[1].Value.Equals(dgv.Rows[i].Cells[3].Value))
+                    {
+                        dgv.Rows[i].Cells[1].Style.BackColor = Color.Green;
+                    }
+                    else
+                    {
+                        dgv.Rows[i].Cells[1].Style.BackColor = Color.Red;
+                    }
+                    if (dgv.Rows[i].Cells[2].Value.Equals(dgv.Rows[i].Cells[3].Value))
+                    {
+                        dgv.Rows[i].Cells[2].Style.BackColor = Color.Green;
+                    }
+                    else
+                    {
+                        dgv.Rows[i].Cells[2].Style.BackColor = Color.Red;
+                    }
                 }
             }
-            MessageBox.Show($"From a total of {dgv.Rows.Count} entries, {counter} values were incorrectly predicted by the selected algorithm.");
+            else
+            {
+                for (int i = 0; i < dgv.Rows.Count; i++)
+                {
+                    if (dgv.Rows[i].Cells[0].Value.Equals(dgv.Rows[i].Cells[1].Value))
+                    {
+                        dgv.Rows[i].Cells[0].Style.BackColor = Color.Green;
+                        dgv.Rows[i].Cells[1].Style.BackColor = Color.Green;
+                    }
+                    else
+                    {
+                        dgv.Rows[i].Cells[0].Style.BackColor = Color.Red;
+                        dgv.Rows[i].Cells[1].Style.BackColor = Color.Red;
+                        counter++;
+                    }
+                }
+                MessageBox.Show($"From a total of {dgv.Rows.Count} entries, {counter} values were incorrectly predicted by the selected algorithm.");
+            } 
         }
 
         public static void RemoveHighlight(DataGridView dgv)
         {
             for (int i = 0; i < dgv.Rows.Count; i++)
             {
-                dgv.Rows[i].Cells[0].Style.BackColor = Color.White;
+                for (int j = 0; j < dgv.Columns.Count; j++)
+                {
+                    dgv.Rows[i].Cells[j].Style.BackColor = Color.White;
+                }
             }
-
         }
     }
 }
