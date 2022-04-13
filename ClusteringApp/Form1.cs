@@ -11,10 +11,11 @@ namespace ClusteringApp
     {
         string filePath = string.Empty;
         string predPath = string.Empty;
-        bool predColumnAdded = false;
+        ConfusionMatrix singleCM;
         ConfusionMatrix cmKNN;
         ConfusionMatrix cmSVM;
         ConfusionMatrix cmGNB;
+        Metrics singleM;
         Metrics mKNN;
         Metrics mSVM;
         Metrics mGNB;
@@ -22,54 +23,39 @@ namespace ClusteringApp
         public Form1()
         {
             InitializeComponent();
-            label18.Visible = false;
-            label19.Visible = false;
-            optShowKNNCM.Visible = false;
-            optShowKNNM.Visible = false;
-            optShowSVMCM.Visible = false;
-            optShowSVMM.Visible = false;
-            optShowGNBCM.Visible = false;
-            optShowGNBM.Visible = false;
-            optShowKNNCM.Checked = false;
-            optShowKNNM.Checked = false;
-            optShowSVMCM.Checked = false;
-            optShowSVMM.Checked = false;
-            optShowGNBCM.Checked = false;
-            optShowGNBM.Checked = false;
+            ClearForm();
         }
 
+        /// <summary>
+        /// Dataset selection and datagridview population
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnBrowse_Click(object sender, EventArgs e)
         {
             filePath = Utils.SetDatasetPath(txtFilePath);
             Data.BindData(filePath, dgvDataset, txtFilePath);
+            var count = dgvDataset.Columns.Count;
+            cbxColumns.Items.Add("none");
+            for (int i = 0; i < count; i++)
+            {
+                cbxColumns.Items.Add(dgvDataset.Columns[i].HeaderText);
+            }
+            if (cbxColumns.Items.Count > 0)
+            {
+                cbxColumns.Items.RemoveAt(1);
+            } 
         }
 
+        /// <summary>
+        /// Checks the mandatory field completion status 
+        /// Generates resource address
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btnStartClustering_Click(object sender, EventArgs e)
         {
-            txtTN.Clear();
-            txtTP.Clear();
-            txtFP.Clear();
-            txtFN.Clear();
-            txtAccuracy.Clear();
-            txtPrecision.Clear();
-            txtPrelevance.Clear();
-            txtTNRate.Clear();
-            txtTPRate.Clear();
-            txtFPRate.Clear();
-            label18.Visible = false;
-            label19.Visible = false;
-            optShowKNNCM.Visible = false;
-            optShowKNNM.Visible = false;
-            optShowSVMCM.Visible = false;
-            optShowSVMM.Visible = false;
-            optShowGNBCM.Visible = false;
-            optShowGNBM.Visible = false;
-            optShowKNNCM.Checked = false;
-            optShowKNNM.Checked = false;
-            optShowSVMCM.Checked = false;
-            optShowSVMM.Checked = false;
-            optShowGNBCM.Checked = false;
-            optShowGNBM.Checked = false;
+            ClearForm();
 
             if (txtFilePath.Text.Length > 0)
             {
@@ -81,13 +67,16 @@ namespace ClusteringApp
                         btnClose.Enabled = false;
                         btnBrowse.Enabled = false;
 
-                        if (predColumnAdded == true)
+                        var algorithm = Utils.GetAlgorithm(optKNN, optSVM, optBayes, optCompare);
+                        var operation = Utils.GetOperation(optDropNaRows, optDropNaColumns, optReplaceNan);
+                        var column = "none";
+
+                        if (cbxColumns.SelectedIndex != -1)
                         {
-                            dgvDataset.Columns.RemoveAt(0);
-                            Data.RemoveHighlight(dgvDataset);
+                            column = cbxColumns.SelectedItem.ToString();
                         }
 
-                        var response = await UploadAsync(filePath, "/" + Utils.GetAlgorithm(optKNN, optSVM, optBayes, optCompare) + "/" + Utils.GetOperation(optDropNaRows, optDropNaColumns, optReplaceNan));
+                        var response = await UploadAsync(filePath, "/" + algorithm + "/" + operation + "/" + column);
 
                         if (response.IsSuccessful)
                         {
@@ -119,13 +108,29 @@ namespace ClusteringApp
                                 }
                                 else
                                 {
-                                    DataAnalysis.GenerateConfusionMatrix(dgvDataset, txtTN, txtFP, txtFN, txtTP, 0, 1);
-                                    DataAnalysis.CalculateMetrics(dgvDataset, txtTN, txtFP, txtFN, txtTP, txtAccuracy, txtPrecision, txtPrelevance, txtTPRate, txtFPRate, txtTNRate);
+                                    singleCM = DataAnalysis.GenerateConfusionMatrixForComparison(dgvDataset, 0, 1);
+                                    txtTN.Text = singleCM.TrueNegativeCount.ToString();
+                                    txtTP.Text = singleCM.TruePositiveCount.ToString();
+                                    txtFN.Text = singleCM.FalseNegativeCount.ToString();
+                                    txtFP.Text = singleCM.FalsePositiveCount.ToString();
+
+                                    singleM = DataAnalysis.CalculateMetricsForComparison(dgvDataset, singleCM);
+                                    txtAccuracy.Text = singleM.Accuracy;
+                                    txtPrecision.Text = singleM.Precision;
+                                    txtPrelevance.Text = singleM.Prelevance;
+                                    txtTNRate.Text = singleM.TrueNegativeRate;
+                                    txtTPRate.Text = singleM.TruePositiveRate;
+                                    txtFPRate.Text = singleM.FalsePositiveRate;
+
+                                    txtCorrectPredCount.Text = (singleCM.TruePositiveCount + singleCM.TrueNegativeCount).ToString();
+                                    txtIncorrectPredCount.Text = (singleCM.FalsePositiveCount + singleCM.FalseNegativeCount).ToString();
+
+                                    //DataAnalysis.GenerateConfusionMatrix(dgvDataset, txtTN, txtFP, txtFN, txtTP, 0, 1);
+                                    //DataAnalysis.CalculateMetrics(dgvDataset, txtTN, txtFP, txtFN, txtTP, txtAccuracy, txtPrecision, txtPrelevance, txtTPRate, txtFPRate, txtTNRate);
                                 }
-                                predColumnAdded = true;
-                                foreach (DataGridViewColumn column in dgvDataset.Columns)
+                                foreach (DataGridViewColumn col in dgvDataset.Columns)
                                 {
-                                    column.SortMode = DataGridViewColumnSortMode.NotSortable;
+                                    col.SortMode = DataGridViewColumnSortMode.NotSortable;
                                 }
                             }                
                             Utils.DeleteFile();
@@ -154,6 +159,11 @@ namespace ClusteringApp
             }   
         }
 
+        /// <summary>
+        /// Populate confusion matrix for KNN in case of algorithm comparison
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void optShowKNNCM_CheckedChanged(object sender, EventArgs e)
         {
             txtTN.Text = cmKNN.TrueNegativeCount.ToString();
@@ -162,6 +172,11 @@ namespace ClusteringApp
             txtFP.Text = cmKNN.FalsePositiveCount.ToString();
         }
 
+        /// <summary>
+        /// Populate confusion matrix for SVM in case of algorithm comparison
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void optShowSVMCM_CheckedChanged(object sender, EventArgs e)
         {
             txtTN.Text = cmSVM.TrueNegativeCount.ToString();
@@ -170,6 +185,11 @@ namespace ClusteringApp
             txtFP.Text = cmSVM.FalsePositiveCount.ToString();
         }
 
+        /// <summary>
+        /// Populate confusion matrix for GNB in case of algorithm comparison
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void optShowGNBCM_CheckedChanged(object sender, EventArgs e)
         {
             txtTN.Text = cmGNB.TrueNegativeCount.ToString();
@@ -178,6 +198,11 @@ namespace ClusteringApp
             txtFP.Text = cmGNB.FalsePositiveCount.ToString();
         }
 
+        /// <summary>
+        /// Populate metrics for KNN in case of algorithm comparison
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void optShowKNNM_CheckedChanged(object sender, EventArgs e)
         {
             txtAccuracy.Text = mKNN.Accuracy;
@@ -186,8 +211,15 @@ namespace ClusteringApp
             txtTNRate.Text = mKNN.TrueNegativeRate;
             txtTPRate.Text = mKNN.TruePositiveRate;
             txtFPRate.Text = mKNN.FalsePositiveRate;
+            txtCorrectPredCount.Text = (cmKNN.TruePositiveCount + cmKNN.TrueNegativeCount).ToString();
+            txtIncorrectPredCount.Text = (cmKNN.FalsePositiveCount + cmKNN.FalseNegativeCount).ToString();
         }
 
+        /// <summary>
+        /// Populate metrics for SVM in case of algorithm comparison
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void optShowSVMM_CheckedChanged(object sender, EventArgs e)
         {
             txtAccuracy.Text = mSVM.Accuracy;
@@ -196,8 +228,15 @@ namespace ClusteringApp
             txtTNRate.Text = mSVM.TrueNegativeRate;
             txtTPRate.Text = mSVM.TruePositiveRate;
             txtFPRate.Text = mSVM.FalsePositiveRate;
+            txtCorrectPredCount.Text = (cmSVM.TruePositiveCount + cmSVM.TrueNegativeCount).ToString();
+            txtIncorrectPredCount.Text = (cmSVM.FalsePositiveCount + cmSVM.FalseNegativeCount).ToString();
         }
 
+        /// <summary>
+        /// Populate metrics for GNB in case of algorithm comparison
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void optShowGNBM_CheckedChanged(object sender, EventArgs e)
         {
             txtAccuracy.Text = mGNB.Accuracy;
@@ -206,11 +245,46 @@ namespace ClusteringApp
             txtTNRate.Text = mGNB.TrueNegativeRate;
             txtTPRate.Text = mGNB.TruePositiveRate;
             txtFPRate.Text = mGNB.FalsePositiveRate;
+            txtCorrectPredCount.Text = (cmGNB.TruePositiveCount + cmGNB.TrueNegativeCount).ToString();
+            txtIncorrectPredCount.Text = (cmGNB.FalsePositiveCount + cmGNB.FalseNegativeCount).ToString();
+        }
+
+        /// <summary>
+        /// Clear form an reset controls
+        /// </summary>
+        private void ClearForm()
+        {
+            txtTN.Clear();
+            txtTP.Clear();
+            txtFP.Clear();
+            txtFN.Clear();
+            txtAccuracy.Clear();
+            txtPrecision.Clear();
+            txtPrelevance.Clear();
+            txtTNRate.Clear();
+            txtTPRate.Clear();
+            txtFPRate.Clear();
+            txtCorrectPredCount.Clear();
+            txtIncorrectPredCount.Clear();
+            label18.Visible = false;
+            label19.Visible = false;
+            optShowKNNCM.Visible = false;
+            optShowKNNM.Visible = false;
+            optShowSVMCM.Visible = false;
+            optShowSVMM.Visible = false;
+            optShowGNBCM.Visible = false;
+            optShowGNBM.Visible = false;
+            optShowKNNCM.Checked = false;
+            optShowKNNM.Checked = false;
+            optShowSVMCM.Checked = false;
+            optShowSVMM.Checked = false;
+            optShowGNBCM.Checked = false;
+            optShowGNBM.Checked = false;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure?", "Close application", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to close the application?", "Close application", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             if (dialogResult == DialogResult.Yes)
             {
                 Close();
@@ -222,6 +296,12 @@ namespace ClusteringApp
             
         }
 
+        /// <summary>
+        /// Async function which send the csv file to the webservice and receives the result
+        /// </summary>
+        /// <param name="fileName">path to the csv file</param>
+        /// <param name="operation">combined string of selected algorithm/preprocessing operation/column name to remove</param>
+        /// <returns></returns>
         private async Task<RestResponse> UploadAsync(string fileName, string operation)
         {
             RestClient restClient = new RestClient("http://127.0.0.1:5000/");

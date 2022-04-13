@@ -12,7 +12,7 @@ namespace ClusteringApp
             int fnCounter = 0;
             int tpCounter = 0;
 
-            for (int i = 0; i < dgv.Rows.Count; i++)
+            for (int i = 0; i < dgv.Rows.Count - 1; i++)
             {
                 if (dgv.Rows[i].Cells[predColIndex].Value.Equals("0") && dgv.Rows[i].Cells[trueColIndex].Value.Equals("0"))
                 {
@@ -31,7 +31,6 @@ namespace ClusteringApp
                     fpCounter++;
                 }
             }
-
             tn.Text = tnCounter.ToString();
             tp.Text = tpCounter.ToString();
             fn.Text = fnCounter.ToString();
@@ -45,7 +44,7 @@ namespace ClusteringApp
             int fnCounter = 0;
             int tpCounter = 0;
 
-            for (int i = 0; i < dgv.Rows.Count; i++)
+            for (int i = 0; i < dgv.Rows.Count - 1; i++)
             {
                 if (dgv.Rows[i].Cells[predColIndex].Value.Equals("0") && dgv.Rows[i].Cells[trueColIndex].Value.Equals("0"))
                 {
@@ -66,7 +65,6 @@ namespace ClusteringApp
             }
 
             var cm = new ConfusionMatrix(tnCounter, tpCounter, fnCounter, fpCounter);
-
             return cm;
         }
 
@@ -103,26 +101,23 @@ namespace ClusteringApp
             string fprate = string.Empty;
             string tnrate = string.Empty;
 
-            //if (cm.TrueNegativeCount != null && cm.TruePositiveCount != null && cm.FalseNegativeCount != null && cm.FalsePositiveCount != null)
-            //{
-                float acc = ((float)cm.TruePositiveCount + (float)cm.TrueNegativeCount) / (float)dgv.Rows.Count;
-                accuracy = Math.Round(acc * 100, 3).ToString();
+            float acc = ((float)cm.TruePositiveCount + (float)cm.TrueNegativeCount) / (float)dgv.Rows.Count;
+            accuracy = Math.Round(acc * 100, 3).ToString();
 
-                float prec = (float)cm.TruePositiveCount / ((float)cm.TruePositiveCount + (float)cm.FalsePositiveCount);
-                precision = Math.Round(prec * 100, 3).ToString(); ;
+            float prec = (float)cm.TruePositiveCount / ((float)cm.TruePositiveCount + (float)cm.FalsePositiveCount);
+            precision = Math.Round(prec * 100, 3).ToString(); ;
 
-                float prel = ((float)cm.TruePositiveCount + (float)cm.FalseNegativeCount) / (float)dgv.Rows.Count;
-                prelevance = Math.Round(prel * 100, 3).ToString();
+            float prel = ((float)cm.TruePositiveCount + (float)cm.FalseNegativeCount) / (float)dgv.Rows.Count;
+            prelevance = Math.Round(prel * 100, 3).ToString();
 
-                float tpr = (float)cm.TruePositiveCount / ((float)cm.TruePositiveCount + (float)cm.FalseNegativeCount);
-                tprate = Math.Round(tpr * 100, 3).ToString();
+            float tpr = (float)cm.TruePositiveCount / ((float)cm.TruePositiveCount + (float)cm.FalseNegativeCount);
+            tprate = Math.Round(tpr * 100, 3).ToString();
 
-                float fpr = (float)cm.FalsePositiveCount / ((float)cm.TrueNegativeCount + (float)cm.FalsePositiveCount);
-                fprate = Math.Round(fpr * 100, 3).ToString();
+            float fpr = (float)cm.FalsePositiveCount / ((float)cm.TrueNegativeCount + (float)cm.FalsePositiveCount);
+            fprate = Math.Round(fpr * 100, 3).ToString();
 
-                float tnr = (float)cm.TrueNegativeCount / ((float)cm.TrueNegativeCount + (float)cm.FalsePositiveCount);
-                tnrate = Math.Round(tnr * 100, 3).ToString();
-            //}
+            float tnr = (float)cm.TrueNegativeCount / ((float)cm.TrueNegativeCount + (float)cm.FalsePositiveCount);
+            tnrate = Math.Round(tnr * 100, 3).ToString();
 
             var metrics = new Metrics(accuracy, precision, prelevance, tprate, fprate, tnrate);
             return metrics;

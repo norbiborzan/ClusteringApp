@@ -9,6 +9,12 @@ namespace ClusteringApp
 {
     public static class Data
     {
+        /// <summary>
+        /// Populates the datagridview and sets the filepath textbox
+        /// </summary>
+        /// <param name="filePath">Selected file path</param>
+        /// <param name="dgv">Datagridview</param>
+        /// <param name="textBox">Filepath textbox</param>
         public static void BindData(string filePath, DataGridView dgv, TextBox textBox)
         {
             try
@@ -57,27 +63,17 @@ namespace ClusteringApp
             }
         }
 
-        //not used
-        public static  void AddPredictedColumn(DataGridView dgv, string predPath)
-        {
-            DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
-            column.Name = "Predicted Value";
-            dgv.Columns.Insert(0, column);
-
-            string[] lines = File.ReadLines(predPath).ToArray();
-
-            for (int i = 0; i < dgv.Rows.Count; i++)
-            {
-                dgv.Rows[i].Cells["Predicted Value"].Value = lines[i];
-            }
-        }
-
+        /// <summary>
+        /// Highlights the differences between true class and predicted classes
+        /// </summary>
+        /// <param name="dgv">Datagridview</param>
+        /// <param name="radio">optCompare for algorithm comparison</param>
         public static void HighlightDifferences(DataGridView dgv, RadioButton radio)
         {
             int counter = 0;
             if (radio.Checked)
             {
-                for (int i = 0; i < dgv.Rows.Count; i++)
+                for (int i = 0; i < dgv.Rows.Count - 1; i++)
                 {
                     if (dgv.Rows[i].Cells[0].Value.Equals(dgv.Rows[i].Cells[3].Value))
                     {
@@ -107,7 +103,7 @@ namespace ClusteringApp
             }
             else
             {
-                for (int i = 0; i < dgv.Rows.Count; i++)
+                for (int i = 0; i < dgv.Rows.Count - 1; i++)
                 {
                     if (dgv.Rows[i].Cells[0].Value.Equals(dgv.Rows[i].Cells[1].Value))
                     {
@@ -121,8 +117,24 @@ namespace ClusteringApp
                         counter++;
                     }
                 }
-                MessageBox.Show($"From a total of {dgv.Rows.Count} entries, {counter} values were incorrectly predicted by the selected algorithm.");
+                //MessageBox.Show($"From a total of {dgv.Rows.Count} entries, {counter} values were incorrectly predicted by the selected algorithm.");
             } 
+        }
+
+        //############################################## NOT USED ###################################################
+
+        public static void AddPredictedColumn(DataGridView dgv, string predPath)
+        {
+            DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
+            column.Name = "Predicted Value";
+            dgv.Columns.Insert(0, column);
+
+            string[] lines = File.ReadLines(predPath).ToArray();
+
+            for (int i = 0; i < dgv.Rows.Count; i++)
+            {
+                dgv.Rows[i].Cells["Predicted Value"].Value = lines[i];
+            }
         }
 
         public static void RemoveHighlight(DataGridView dgv)
