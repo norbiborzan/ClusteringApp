@@ -117,35 +117,7 @@ namespace ClusteringApp
                         counter++;
                     }
                 }
-                //MessageBox.Show($"From a total of {dgv.Rows.Count} entries, {counter} values were incorrectly predicted by the selected algorithm.");
             } 
-        }
-
-        //############################################## NOT USED ###################################################
-
-        public static void AddPredictedColumn(DataGridView dgv, string predPath)
-        {
-            DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
-            column.Name = "Predicted Value";
-            dgv.Columns.Insert(0, column);
-
-            string[] lines = File.ReadLines(predPath).ToArray();
-
-            for (int i = 0; i < dgv.Rows.Count; i++)
-            {
-                dgv.Rows[i].Cells["Predicted Value"].Value = lines[i];
-            }
-        }
-
-        public static void RemoveHighlight(DataGridView dgv)
-        {
-            for (int i = 0; i < dgv.Rows.Count; i++)
-            {
-                for (int j = 0; j < dgv.Columns.Count; j++)
-                {
-                    dgv.Rows[i].Cells[j].Style.BackColor = Color.White;
-                }
-            }
         }
     }
 }

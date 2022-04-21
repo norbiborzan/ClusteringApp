@@ -33,6 +33,7 @@ namespace ClusteringApp
         /// <param name="e"></param>
         private void btnBrowse_Click(object sender, EventArgs e)
         {
+            ClearForm();
             filePath = Utils.SetDatasetPath(txtFilePath);
             Data.BindData(filePath, dgvDataset, txtFilePath);
             var count = dgvDataset.Columns.Count;
@@ -73,7 +74,10 @@ namespace ClusteringApp
 
                         if (cbxColumns.SelectedIndex != -1)
                         {
+                            //col name
                             column = cbxColumns.SelectedItem.ToString();
+                            //col index
+                            //column = cbxColumns.SelectedIndex;
                         }
 
                         var response = await UploadAsync(filePath, "/" + algorithm + "/" + operation + "/" + column);
@@ -124,9 +128,6 @@ namespace ClusteringApp
 
                                     txtCorrectPredCount.Text = (singleCM.TruePositiveCount + singleCM.TrueNegativeCount).ToString();
                                     txtIncorrectPredCount.Text = (singleCM.FalsePositiveCount + singleCM.FalseNegativeCount).ToString();
-
-                                    //DataAnalysis.GenerateConfusionMatrix(dgvDataset, txtTN, txtFP, txtFN, txtTP, 0, 1);
-                                    //DataAnalysis.CalculateMetrics(dgvDataset, txtTN, txtFP, txtFN, txtTP, txtAccuracy, txtPrecision, txtPrelevance, txtTPRate, txtFPRate, txtTNRate);
                                 }
                                 foreach (DataGridViewColumn col in dgvDataset.Columns)
                                 {
@@ -280,6 +281,7 @@ namespace ClusteringApp
             optShowSVMM.Checked = false;
             optShowGNBCM.Checked = false;
             optShowGNBM.Checked = false;
+            cbxColumns.DataSource = null;
         }
 
         private void btnClose_Click(object sender, EventArgs e)

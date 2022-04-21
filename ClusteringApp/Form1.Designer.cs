@@ -62,6 +62,10 @@ namespace ClusteringApp
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.grpMetrics = new System.Windows.Forms.GroupBox();
+            this.txtIncorrectPredCount = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txtCorrectPredCount = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.optShowKNNM = new System.Windows.Forms.RadioButton();
             this.label15 = new System.Windows.Forms.Label();
@@ -88,10 +92,6 @@ namespace ClusteringApp
             this.cbxColumns = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
             this.dgvDataset = new System.Windows.Forms.DataGridView();
-            this.txtIncorrectPredCount = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.txtCorrectPredCount = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
             this.grpAppControls = new System.Windows.Forms.GroupBox();
             this.lblAppVersion = new System.Windows.Forms.Label();
             this.grpDataset.SuspendLayout();
@@ -495,10 +495,48 @@ namespace ClusteringApp
             this.grpMetrics.Controls.Add(this.lbl7);
             this.grpMetrics.Location = new System.Drawing.Point(24, 899);
             this.grpMetrics.Name = "grpMetrics";
-            this.grpMetrics.Size = new System.Drawing.Size(643, 289);
+            this.grpMetrics.Size = new System.Drawing.Size(643, 301);
             this.grpMetrics.TabIndex = 14;
             this.grpMetrics.TabStop = false;
             this.grpMetrics.Text = "Metrics";
+            // 
+            // txtIncorrectPredCount
+            // 
+            this.txtIncorrectPredCount.BackColor = System.Drawing.SystemColors.Control;
+            this.txtIncorrectPredCount.Location = new System.Drawing.Point(464, 243);
+            this.txtIncorrectPredCount.Name = "txtIncorrectPredCount";
+            this.txtIncorrectPredCount.ReadOnly = true;
+            this.txtIncorrectPredCount.Size = new System.Drawing.Size(124, 29);
+            this.txtIncorrectPredCount.TabIndex = 32;
+            this.txtIncorrectPredCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(404, 209);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(229, 25);
+            this.label23.TabIndex = 31;
+            this.label23.Text = "Incorrect prediction count";
+            // 
+            // txtCorrectPredCount
+            // 
+            this.txtCorrectPredCount.BackColor = System.Drawing.SystemColors.Control;
+            this.txtCorrectPredCount.Location = new System.Drawing.Point(158, 243);
+            this.txtCorrectPredCount.Name = "txtCorrectPredCount";
+            this.txtCorrectPredCount.ReadOnly = true;
+            this.txtCorrectPredCount.Size = new System.Drawing.Size(124, 29);
+            this.txtCorrectPredCount.TabIndex = 30;
+            this.txtCorrectPredCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(104, 209);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(218, 25);
+            this.label24.TabIndex = 29;
+            this.label24.Text = "Correct prediction count";
             // 
             // label19
             // 
@@ -728,9 +766,9 @@ namespace ClusteringApp
             // 
             this.grpSelectColumn.Controls.Add(this.cbxColumns);
             this.grpSelectColumn.Controls.Add(this.label20);
-            this.grpSelectColumn.Location = new System.Drawing.Point(24, 1206);
+            this.grpSelectColumn.Location = new System.Drawing.Point(24, 1217);
             this.grpSelectColumn.Name = "grpSelectColumn";
-            this.grpSelectColumn.Size = new System.Drawing.Size(643, 100);
+            this.grpSelectColumn.Size = new System.Drawing.Size(643, 110);
             this.grpSelectColumn.TabIndex = 15;
             this.grpSelectColumn.TabStop = false;
             this.grpSelectColumn.Text = "Remove column";
@@ -765,52 +803,14 @@ namespace ClusteringApp
             this.dgvDataset.Name = "dgvDataset";
             this.dgvDataset.RowHeadersWidth = 72;
             this.dgvDataset.RowTemplate.Height = 31;
-            this.dgvDataset.Size = new System.Drawing.Size(1884, 1414);
+            this.dgvDataset.Size = new System.Drawing.Size(1884, 1444);
             this.dgvDataset.TabIndex = 16;
-            // 
-            // txtIncorrectPredCount
-            // 
-            this.txtIncorrectPredCount.BackColor = System.Drawing.SystemColors.Control;
-            this.txtIncorrectPredCount.Location = new System.Drawing.Point(464, 243);
-            this.txtIncorrectPredCount.Name = "txtIncorrectPredCount";
-            this.txtIncorrectPredCount.ReadOnly = true;
-            this.txtIncorrectPredCount.Size = new System.Drawing.Size(124, 29);
-            this.txtIncorrectPredCount.TabIndex = 32;
-            this.txtIncorrectPredCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(404, 209);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(229, 25);
-            this.label23.TabIndex = 31;
-            this.label23.Text = "Incorrect prediction count";
-            // 
-            // txtCorrectPredCount
-            // 
-            this.txtCorrectPredCount.BackColor = System.Drawing.SystemColors.Control;
-            this.txtCorrectPredCount.Location = new System.Drawing.Point(158, 243);
-            this.txtCorrectPredCount.Name = "txtCorrectPredCount";
-            this.txtCorrectPredCount.ReadOnly = true;
-            this.txtCorrectPredCount.Size = new System.Drawing.Size(124, 29);
-            this.txtCorrectPredCount.TabIndex = 30;
-            this.txtCorrectPredCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(104, 209);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(218, 25);
-            this.label24.TabIndex = 29;
-            this.label24.Text = "Correct prediction count";
             // 
             // grpAppControls
             // 
             this.grpAppControls.Controls.Add(this.btnStartClustering);
             this.grpAppControls.Controls.Add(this.btnClose);
-            this.grpAppControls.Location = new System.Drawing.Point(24, 1313);
+            this.grpAppControls.Location = new System.Drawing.Point(24, 1330);
             this.grpAppControls.Name = "grpAppControls";
             this.grpAppControls.Size = new System.Drawing.Size(643, 104);
             this.grpAppControls.TabIndex = 17;
@@ -820,17 +820,17 @@ namespace ClusteringApp
             // 
             this.lblAppVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblAppVersion.AutoSize = true;
-            this.lblAppVersion.Location = new System.Drawing.Point(13, 1424);
+            this.lblAppVersion.Location = new System.Drawing.Point(13, 1454);
             this.lblAppVersion.Name = "lblAppVersion";
-            this.lblAppVersion.Size = new System.Drawing.Size(345, 25);
+            this.lblAppVersion.Size = new System.Drawing.Size(341, 25);
             this.lblAppVersion.TabIndex = 18;
-            this.lblAppVersion.Text = "Clustering Algorithm Compares V1.0.0";
+            this.lblAppVersion.Text = "Clustering Algorithm Comparer V1.0.0";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2598, 1456);
+            this.ClientSize = new System.Drawing.Size(2598, 1486);
             this.Controls.Add(this.lblAppVersion);
             this.Controls.Add(this.grpAppControls);
             this.Controls.Add(this.dgvDataset);
@@ -841,7 +841,7 @@ namespace ClusteringApp
             this.Controls.Add(this.grpOperations);
             this.Controls.Add(this.grpDataset);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(2622, 1507);
+            this.MinimumSize = new System.Drawing.Size(2622, 1550);
             this.Name = "Form1";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
