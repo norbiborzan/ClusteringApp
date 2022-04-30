@@ -56,7 +56,7 @@ namespace ClusteringApp
         /// <param name="e"></param>
         private async void btnStartClustering_Click(object sender, EventArgs e)
         {
-            ClearForm();
+            //ClearForm();
 
             if (txtFilePath.Text.Length > 0)
             {
@@ -134,7 +134,7 @@ namespace ClusteringApp
                                     col.SortMode = DataGridViewColumnSortMode.NotSortable;
                                 }
                             }                
-                            Utils.DeleteFile();
+                            //Utils.DeleteFile();
                         }
                         else
                         {
@@ -282,6 +282,7 @@ namespace ClusteringApp
             optShowGNBCM.Checked = false;
             optShowGNBM.Checked = false;
             cbxColumns.DataSource = null;
+            cbxColumns.Items.Clear();
         }
 
         private void btnClose_Click(object sender, EventArgs e)

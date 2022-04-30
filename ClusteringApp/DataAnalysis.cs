@@ -45,23 +45,23 @@ namespace ClusteringApp
             string fprate = string.Empty;
             string tnrate = string.Empty;
 
-            float acc = ((float)cm.TruePositiveCount + (float)cm.TrueNegativeCount) / (float)dgv.Rows.Count;
-            accuracy = Math.Round(acc * 100, 3).ToString();
+            float acc = ((float)cm.TruePositiveCount + (float)cm.TrueNegativeCount) / ((float)dgv.Rows.Count - 1);
+            accuracy = Math.Round(acc * 100, 2).ToString();
 
             float prec = (float)cm.TruePositiveCount / ((float)cm.TruePositiveCount + (float)cm.FalsePositiveCount);
-            precision = Math.Round(prec * 100, 3).ToString(); ;
+            precision = Math.Round(prec * 100, 2).ToString(); 
 
-            float prel = ((float)cm.TruePositiveCount + (float)cm.FalseNegativeCount) / (float)dgv.Rows.Count;
-            prelevance = Math.Round(prel * 100, 3).ToString();
+            float prel = ((float)cm.TruePositiveCount + (float)cm.FalseNegativeCount) / ((float)dgv.Rows.Count - 1);
+            prelevance = Math.Round(prel * 100, 2).ToString();
 
             float tpr = (float)cm.TruePositiveCount / ((float)cm.TruePositiveCount + (float)cm.FalseNegativeCount);
-            tprate = Math.Round(tpr * 100, 3).ToString();
+            tprate = Math.Round(tpr * 100, 2).ToString();
 
             float fpr = (float)cm.FalsePositiveCount / ((float)cm.TrueNegativeCount + (float)cm.FalsePositiveCount);
-            fprate = Math.Round(fpr * 100, 3).ToString();
+            fprate = Math.Round(fpr * 100, 2).ToString();
 
             float tnr = (float)cm.TrueNegativeCount / ((float)cm.TrueNegativeCount + (float)cm.FalsePositiveCount);
-            tnrate = Math.Round(tnr * 100, 3).ToString();
+            tnrate = Math.Round(tnr * 100, 2).ToString();
 
             var metrics = new Metrics(accuracy, precision, prelevance, tprate, fprate, tnrate);
             return metrics;
