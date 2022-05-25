@@ -847,6 +847,7 @@ namespace ClusteringApp
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
             this.Text = "Clustering Algorithm Comparer";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.grpDataset.ResumeLayout(false);
             this.grpDataset.PerformLayout();
             this.grpOperations.ResumeLayout(false);

@@ -56,8 +56,6 @@ namespace ClusteringApp
         /// <param name="e"></param>
         private async void btnStartClustering_Click(object sender, EventArgs e)
         {
-            //ClearForm();
-
             if (txtFilePath.Text.Length > 0)
             {
                 if (optDropNaRows.Checked || optDropNaColumns.Checked || optReplaceNan.Checked)
@@ -74,10 +72,7 @@ namespace ClusteringApp
 
                         if (cbxColumns.SelectedIndex != -1)
                         {
-                            //col name
                             column = cbxColumns.SelectedItem.ToString();
-                            //col index
-                            //column = cbxColumns.SelectedIndex;
                         }
 
                         var response = await UploadAsync(filePath, "/" + algorithm + "/" + operation + "/" + column);
@@ -158,6 +153,25 @@ namespace ClusteringApp
             {
                 MessageBox.Show("Dataset missing. \nImport the dataset using the Load dataset button.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }   
+        }
+
+        /// <summary>
+        /// Async function which send the csv file to the webservice and receives the result
+        /// </summary>
+        /// <param name="fileName">path to the csv file</param>
+        /// <param name="operation">combined string of selected algorithm/preprocessing operation/column name to remove</param>
+        /// <returns></returns>
+        private async Task<RestResponse> UploadAsync(string fileName, string operation)
+        {
+            RestClient restClient = new RestClient("http://127.0.0.1:5000/");
+            RestRequest restRequest = new RestRequest(operation);
+            restRequest.RequestFormat = DataFormat.Json;
+            restRequest.Method = Method.Post;
+            restRequest.AddHeader("Content-Type", "multipart/form-data");
+            restRequest.AddFile("content", fileName);
+            var restResponse = await restClient.ExecuteAsync(restRequest);
+
+            return restResponse;
         }
 
         /// <summary>
@@ -285,6 +299,12 @@ namespace ClusteringApp
             cbxColumns.Items.Clear();
         }
 
+        /// <summary>
+        /// Ask the user if the form should close.
+        /// Called on Close button(btnClose).
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnClose_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to close the application?", "Close application", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
@@ -296,26 +316,21 @@ namespace ClusteringApp
             {
                 return;
             }
-            
         }
 
         /// <summary>
-        /// Async function which send the csv file to the webservice and receives the result
+        /// Ask the user if the form should close.
+        /// Called on FormClosing event.
         /// </summary>
-        /// <param name="fileName">path to the csv file</param>
-        /// <param name="operation">combined string of selected algorithm/preprocessing operation/column name to remove</param>
-        /// <returns></returns>
-        private async Task<RestResponse> UploadAsync(string fileName, string operation)
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            RestClient restClient = new RestClient("http://127.0.0.1:5000/");
-            RestRequest restRequest = new RestRequest(operation);
-            restRequest.RequestFormat = DataFormat.Json;
-            restRequest.Method = Method.Post;
-            restRequest.AddHeader("Content-Type", "multipart/form-data");
-            restRequest.AddFile("content", fileName);
-            var restResponse = await restClient.ExecuteAsync(restRequest);
-
-            return restResponse;
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to close the application?", "Close application", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            if (dialogResult == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }
