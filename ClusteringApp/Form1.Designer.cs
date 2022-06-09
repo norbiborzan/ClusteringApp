@@ -262,9 +262,9 @@ namespace ClusteringApp
             this.optReplaceNan.Location = new System.Drawing.Point(73, 156);
             this.optReplaceNan.Margin = new System.Windows.Forms.Padding(4);
             this.optReplaceNan.Name = "optReplaceNan";
-            this.optReplaceNan.Size = new System.Drawing.Size(441, 29);
+            this.optReplaceNan.Size = new System.Drawing.Size(432, 29);
             this.optReplaceNan.TabIndex = 14;
-            this.optReplaceNan.Text = "Replace NaN values with average of neighbors";
+            this.optReplaceNan.Text = "Replace null values with average of neighbors";
             this.optReplaceNan.UseVisualStyleBackColor = true;
             // 
             // lblPreprocessingType
@@ -284,9 +284,9 @@ namespace ClusteringApp
             this.optDropNaRows.Location = new System.Drawing.Point(73, 78);
             this.optDropNaRows.Margin = new System.Windows.Forms.Padding(4);
             this.optDropNaRows.Name = "optDropNaRows";
-            this.optDropNaRows.Size = new System.Drawing.Size(325, 29);
+            this.optDropNaRows.Size = new System.Drawing.Size(316, 29);
             this.optDropNaRows.TabIndex = 11;
-            this.optDropNaRows.Text = "Drop NaN values containing rows";
+            this.optDropNaRows.Text = "Drop null values containing rows";
             this.optDropNaRows.UseVisualStyleBackColor = true;
             // 
             // optDropNaColumns
@@ -295,9 +295,9 @@ namespace ClusteringApp
             this.optDropNaColumns.Location = new System.Drawing.Point(73, 117);
             this.optDropNaColumns.Margin = new System.Windows.Forms.Padding(4);
             this.optDropNaColumns.Name = "optDropNaColumns";
-            this.optDropNaColumns.Size = new System.Drawing.Size(357, 29);
+            this.optDropNaColumns.Size = new System.Drawing.Size(348, 29);
             this.optDropNaColumns.TabIndex = 13;
-            this.optDropNaColumns.Text = "Drop NaN values containing columns";
+            this.optDropNaColumns.Text = "Drop null values containing columns";
             this.optDropNaColumns.UseVisualStyleBackColor = true;
             // 
             // grpConfMtx
@@ -684,7 +684,7 @@ namespace ClusteringApp
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(110, 25);
             this.label11.TabIndex = 19;
-            this.label11.Text = "Prelevance";
+            this.label11.Text = "Prevalence";
             // 
             // txtFPRate
             // 
@@ -822,9 +822,9 @@ namespace ClusteringApp
             this.lblAppVersion.AutoSize = true;
             this.lblAppVersion.Location = new System.Drawing.Point(13, 1454);
             this.lblAppVersion.Name = "lblAppVersion";
-            this.lblAppVersion.Size = new System.Drawing.Size(341, 25);
+            this.lblAppVersion.Size = new System.Drawing.Size(569, 25);
             this.lblAppVersion.TabIndex = 18;
-            this.lblAppVersion.Text = "Clustering Algorithm Comparer V1.0.0";
+            this.lblAppVersion.Text = "Clustering Algorithm Comparer For UPS Defect Detection V1.0.0";
             // 
             // Form1
             // 
@@ -845,7 +845,7 @@ namespace ClusteringApp
             this.Name = "Form1";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
-            this.Text = "Clustering Algorithm Comparer";
+            this.Text = "Clustering Algorithm Comparer For UPS Defect Detection";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.grpDataset.ResumeLayout(false);

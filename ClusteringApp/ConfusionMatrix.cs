@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ClusteringApp
 {
+    /// <summary>
+    /// Holds the confusion matrix values based on the data of the True Class and Predicted Class.
+    /// </summary>
     public class ConfusionMatrix
     {
         public int TrueNegativeCount { get; set; }

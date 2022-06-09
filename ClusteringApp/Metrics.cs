@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ClusteringApp
 {   
+    /// <summary>
+    /// Holds the calculated metrics based on the data of the ConfusionMatrix object.
+    /// </summary>
     public class Metrics
     {
         public string Accuracy { get; set; }

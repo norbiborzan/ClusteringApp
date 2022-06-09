@@ -5,6 +5,13 @@ namespace ClusteringApp
 {
     public static class DataAnalysis
     {
+        /// <summary>
+        /// Calculates and returns a ConfusionMatrix object based on the values of the Pedicted Class and True Class.
+        /// </summary>
+        /// <param name="dgv">DataGridView</param>
+        /// <param name="predColIndex">Predicted Class Column of the DataGridView</param>
+        /// <param name="trueColIndex">True Class Column of the DataGridView</param>
+        /// <returns></returns>
         public static ConfusionMatrix GenerateConfusionMatrixForComparison(DataGridView dgv, int predColIndex, int trueColIndex)
         {
             int tnCounter = 0;
@@ -36,6 +43,12 @@ namespace ClusteringApp
             return cm;
         }
 
+        /// <summary>
+        /// Calculates and returns a Metrics object based on the values of the ConfusionMatrix and the number of rows of the GridView.
+        /// </summary>
+        /// <param name="dgv"></param>
+        /// <param name="cm"></param>
+        /// <returns></returns>
         public static Metrics CalculateMetricsForComparison(DataGridView dgv, ConfusionMatrix cm)
         {
             string accuracy = string.Empty;

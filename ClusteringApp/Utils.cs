@@ -10,6 +10,13 @@ namespace ClusteringApp
 {
     public static class Utils
     {
+        /// <summary>
+        /// Open a browse window end select the .csv file
+        /// Get the last 50 characters of the path to display it in the txtFilePath textbox
+        /// Return the full path as string
+        /// </summary>
+        /// <param name="textBox"></param>
+        /// <returns></returns>
         public static string SetDatasetPath(TextBox textBox)
         {
             var filePath = string.Empty;
@@ -24,7 +31,6 @@ namespace ClusteringApp
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    //Get the path of specified file
                     filePath = openFileDialog.FileName;
                     filePathFull = filePath;
                     if (filePath.Length > 50)
@@ -38,6 +44,14 @@ namespace ClusteringApp
             return filePathFull;
         }
 
+        /// <summary>
+        /// Return the selected algoritm as string
+        /// </summary>
+        /// <param name="knn"></param>
+        /// <param name="svm"></param>
+        /// <param name="gnb"></param>
+        /// <param name="compare"></param>
+        /// <returns></returns>
         public static string GetAlgorithm(RadioButton knn, RadioButton svm, RadioButton gnb, RadioButton compare)
         {
             string algorithm = string.Empty;
@@ -62,6 +76,13 @@ namespace ClusteringApp
             return algorithm;
         }
 
+        /// <summary>
+        /// Return the selected data pre-processing operation
+        /// </summary>
+        /// <param name="rows"></param>
+        /// <param name="cols"></param>
+        /// <param name="replace"></param>
+        /// <returns></returns>
         public static string GetOperation(RadioButton rows, RadioButton cols, RadioButton replace)
         {
             string operation = string.Empty;
@@ -82,6 +103,9 @@ namespace ClusteringApp
             return operation;
         }
 
+        /// <summary>
+        /// Deletes the pred.csv file if it exists
+        /// </summary>
         public static void DeleteFile()
         {
             if (File.Exists(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\pred.csv"))
