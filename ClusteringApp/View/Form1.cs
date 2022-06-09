@@ -56,6 +56,7 @@ namespace ClusteringApp
         /// <param name="e"></param>
         private async void btnStartClustering_Click(object sender, EventArgs e)
         {
+            ClearForm();
             if (txtFilePath.Text.Length > 0)
             {
                 if (optDropNaRows.Checked || optDropNaColumns.Checked || optReplaceNan.Checked)
@@ -88,12 +89,12 @@ namespace ClusteringApp
                                 DataAnalysis.HighlightDifferences(dgvDataset, optCompare);
                                 if (optCompare.Checked)
                                 {
-                                    cmKNN = DataAnalysis.GenerateConfusionMatrixForComparison(dgvDataset, 0, 3);
-                                    cmSVM = DataAnalysis.GenerateConfusionMatrixForComparison(dgvDataset, 1, 3);
-                                    cmGNB = DataAnalysis.GenerateConfusionMatrixForComparison(dgvDataset, 2, 3);
-                                    mKNN = DataAnalysis.CalculateMetricsForComparison(dgvDataset, cmKNN);
-                                    mSVM = DataAnalysis.CalculateMetricsForComparison(dgvDataset, cmSVM);
-                                    mGNB = DataAnalysis.CalculateMetricsForComparison(dgvDataset, cmGNB);
+                                    cmKNN = DataAnalysis.GenerateConfusionMatrix(dgvDataset, 0, 3);
+                                    cmSVM = DataAnalysis.GenerateConfusionMatrix(dgvDataset, 1, 3);
+                                    cmGNB = DataAnalysis.GenerateConfusionMatrix(dgvDataset, 2, 3);
+                                    mKNN = DataAnalysis.CalculateMetrics(dgvDataset, cmKNN);
+                                    mSVM = DataAnalysis.CalculateMetrics(dgvDataset, cmSVM);
+                                    mGNB = DataAnalysis.CalculateMetrics(dgvDataset, cmGNB);
                                     label18.Visible = true;
                                     label19.Visible = true;
                                     optShowKNNCM.Visible = true;
@@ -107,13 +108,13 @@ namespace ClusteringApp
                                 }
                                 else
                                 {
-                                    singleCM = DataAnalysis.GenerateConfusionMatrixForComparison(dgvDataset, 0, 1);
+                                    singleCM = DataAnalysis.GenerateConfusionMatrix(dgvDataset, 0, 1);
                                     txtTN.Text = singleCM.TrueNegativeCount.ToString();
                                     txtTP.Text = singleCM.TruePositiveCount.ToString();
                                     txtFN.Text = singleCM.FalseNegativeCount.ToString();
                                     txtFP.Text = singleCM.FalsePositiveCount.ToString();
 
-                                    singleM = DataAnalysis.CalculateMetricsForComparison(dgvDataset, singleCM);
+                                    singleM = DataAnalysis.CalculateMetrics(dgvDataset, singleCM);
                                     txtAccuracy.Text = singleM.Accuracy;
                                     txtPrecision.Text = singleM.Precision;
                                     txtPrelevance.Text = singleM.Prelevance;

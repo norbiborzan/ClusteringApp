@@ -13,7 +13,7 @@ namespace ClusteringApp
         /// <param name="predColIndex">Predicted Class Column of the DataGridView</param>
         /// <param name="trueColIndex">True Class Column of the DataGridView</param>
         /// <returns></returns>
-        public static ConfusionMatrix GenerateConfusionMatrixForComparison(DataGridView dgv, int predColIndex, int trueColIndex)
+        public static ConfusionMatrix GenerateConfusionMatrix(DataGridView dgv, int predColIndex, int trueColIndex)
         {
             int tnCounter = 0;
             int fpCounter = 0;
@@ -50,7 +50,7 @@ namespace ClusteringApp
         /// <param name="dgv"></param>
         /// <param name="cm"></param>
         /// <returns></returns>
-        public static Metrics CalculateMetricsForComparison(DataGridView dgv, ConfusionMatrix cm)
+        public static Metrics CalculateMetrics(DataGridView dgv, ConfusionMatrix cm)
         {
             string accuracy = string.Empty;
             string precision = string.Empty;
