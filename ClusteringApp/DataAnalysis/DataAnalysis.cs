@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ClusteringApp
@@ -78,6 +79,63 @@ namespace ClusteringApp
 
             var metrics = new Metrics(accuracy, precision, prelevance, tprate, fprate, tnrate);
             return metrics;
+        }
+
+        /// <summary>
+        /// Highlights the differences between true class and predicted classes
+        /// </summary>
+        /// <param name="dgv">Datagridview</param>
+        /// <param name="radio">optCompare for algorithm comparison</param>
+        public static void HighlightDifferences(DataGridView dgv, RadioButton radio)
+        {
+            int counter = 0;
+            if (radio.Checked)
+            {
+                for (int i = 0; i < dgv.Rows.Count - 1; i++)
+                {
+                    if (dgv.Rows[i].Cells[0].Value.Equals(dgv.Rows[i].Cells[3].Value))
+                    {
+                        dgv.Rows[i].Cells[0].Style.BackColor = Color.Green;
+                    }
+                    else
+                    {
+                        dgv.Rows[i].Cells[0].Style.BackColor = Color.Red;
+                    }
+                    if (dgv.Rows[i].Cells[1].Value.Equals(dgv.Rows[i].Cells[3].Value))
+                    {
+                        dgv.Rows[i].Cells[1].Style.BackColor = Color.Green;
+                    }
+                    else
+                    {
+                        dgv.Rows[i].Cells[1].Style.BackColor = Color.Red;
+                    }
+                    if (dgv.Rows[i].Cells[2].Value.Equals(dgv.Rows[i].Cells[3].Value))
+                    {
+                        dgv.Rows[i].Cells[2].Style.BackColor = Color.Green;
+                    }
+                    else
+                    {
+                        dgv.Rows[i].Cells[2].Style.BackColor = Color.Red;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < dgv.Rows.Count - 1; i++)
+                {
+                    if (dgv.Rows[i].Cells[0].Value.Equals(dgv.Rows[i].Cells[1].Value))
+                    {
+                        dgv.Rows[i].Cells[0].Style.BackColor = Color.Green;
+                        dgv.Rows[i].Cells[1].Style.BackColor = Color.Green;
+                    }
+                    else
+                    {
+                        dgv.Rows[i].Cells[0].Style.BackColor = Color.Red;
+                        dgv.Rows[i].Cells[1].Style.BackColor = Color.Red;
+                        counter++;
+                    }
+                }
+            }
         }
     }
 }

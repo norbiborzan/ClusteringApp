@@ -85,7 +85,7 @@ namespace ClusteringApp
                             {
                                 dgvDataset.DataSource = null;
                                 Data.BindData(predPath, dgvDataset, txtFilePath);
-                                Data.HighlightDifferences(dgvDataset, optCompare);
+                                DataAnalysis.HighlightDifferences(dgvDataset, optCompare);
                                 if (optCompare.Checked)
                                 {
                                     cmKNN = DataAnalysis.GenerateConfusionMatrixForComparison(dgvDataset, 0, 3);
