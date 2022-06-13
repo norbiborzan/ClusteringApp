@@ -30,11 +30,11 @@ namespace ClusteringApp
                 {
                     tnCounter++;
                 }
-                else if (dgv.Rows[i].Cells[predColIndex].Value.Equals("1") && dgv.Rows[i].Cells[trueColIndex].Value.Equals("0"))
+                else if (dgv.Rows[i].Cells[predColIndex].Value.Equals("0") && dgv.Rows[i].Cells[trueColIndex].Value.Equals("1"))
                 {
                     fnCounter++;
                 }
-                else if (dgv.Rows[i].Cells[predColIndex].Value.Equals("0") && dgv.Rows[i].Cells[trueColIndex].Value.Equals("1"))
+                else if (dgv.Rows[i].Cells[predColIndex].Value.Equals("1") && dgv.Rows[i].Cells[trueColIndex].Value.Equals("0"))
                 {
                     fpCounter++;
                 }

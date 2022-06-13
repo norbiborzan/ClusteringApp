@@ -34,18 +34,23 @@ namespace ClusteringApp
         private void btnBrowse_Click(object sender, EventArgs e)
         {
             ClearForm();
+
             filePath = Utils.SetDatasetPath(txtFilePath);
             Data.BindData(filePath, dgvDataset, txtFilePath);
             var count = dgvDataset.Columns.Count;
+         
             cbxColumns.Items.Add("none");
-            for (int i = 0; i < count; i++)
+            if (filePath.Length > 0)
             {
-                cbxColumns.Items.Add(dgvDataset.Columns[i].HeaderText);
+                for (int i = 0; i < count; i++)
+                {
+                    cbxColumns.Items.Add(dgvDataset.Columns[i].HeaderText);
+                }
+                if (cbxColumns.Items.Count > 0)
+                {
+                    cbxColumns.Items.RemoveAt(1);
+                }
             }
-            if (cbxColumns.Items.Count > 0)
-            {
-                cbxColumns.Items.RemoveAt(1);
-            } 
         }
 
         /// <summary>
@@ -57,6 +62,7 @@ namespace ClusteringApp
         private async void btnStartClustering_Click(object sender, EventArgs e)
         {
             ClearForm();
+
             if (txtFilePath.Text.Length > 0)
             {
                 if (optDropNaRows.Checked || optDropNaColumns.Checked || optReplaceNan.Checked)
@@ -297,7 +303,7 @@ namespace ClusteringApp
             optShowGNBCM.Checked = false;
             optShowGNBM.Checked = false;
             cbxColumns.DataSource = null;
-            cbxColumns.Items.Clear();
+            //cbxColumns.Items.Clear();
         }
 
         /// <summary>
