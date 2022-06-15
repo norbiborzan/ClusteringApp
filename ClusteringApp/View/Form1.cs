@@ -19,6 +19,7 @@ namespace ClusteringApp
         Metrics mKNN;
         Metrics mSVM;
         Metrics mGNB;
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public Form1()
         {
@@ -37,6 +38,7 @@ namespace ClusteringApp
 
             filePath = Utils.SetDatasetPath(txtFilePath);
             Data.BindData(filePath, dgvDataset, txtFilePath);
+            log.Info($"Loaded initial dataset from {filePath}");
             var count = dgvDataset.Columns.Count;
          
             cbxColumns.Items.Add("none");
@@ -92,6 +94,7 @@ namespace ClusteringApp
                             {
                                 dgvDataset.DataSource = null;
                                 Data.BindData(predPath, dgvDataset, txtFilePath);
+                                log.Info($"Loaded result dataset from {predPath}");
                                 DataAnalysis.HighlightDifferences(dgvDataset, optCompare);
                                 if (optCompare.Checked)
                                 {
@@ -141,6 +144,7 @@ namespace ClusteringApp
                         else
                         {
                             MessageBox.Show("The server is not responding. \nTry again.", "Server error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            log.Error($"Server error - The server responded with {response.StatusCode}");
                         }
                         btnStartClustering.Enabled = true;
                         btnClose.Enabled = true;
@@ -149,16 +153,19 @@ namespace ClusteringApp
                     else
                     {
                         MessageBox.Show("Algorithm not selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        log.Info("Algorithm not selected");
                     }
                 }
                 else
                 {
                     MessageBox.Show("Pre-processing method not selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    log.Info("Pre-processing not selected");
                 }
             }
             else
             {
                 MessageBox.Show("Dataset missing. \nImport the dataset using the Load dataset button.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                log.Info("Dataset missing");
             }   
         }
 
@@ -317,6 +324,7 @@ namespace ClusteringApp
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to close the application?", "Close application", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             if (dialogResult == DialogResult.Yes)
             {
+                log.Info("Closing app");
                 Close();
             }
             else if (dialogResult == DialogResult.No)
@@ -338,6 +346,7 @@ namespace ClusteringApp
             {
                 e.Cancel = true;
             }
+            log.Info("Closing app");
         }
     }
 }
